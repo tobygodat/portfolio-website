@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-17T00:00:00Z",
+  "title": "Design System: Toby Godat",
+  "extensions": {
+    "colorMeta": {
+      "ground-dark": {
+        "role": "neutral",
+        "displayName": "Warm Near-Black Ground",
+        "canonical": "#1b1a19",
+        "tonalRamp": [
+          "oklch(15% 0.004 70)",
+          "oklch(24% 0.004 70)",
+          "oklch(36% 0.004 70)",
+          "oklch(48% 0.004 70)",
+          "oklch(60% 0.004 70)",
+          "oklch(72% 0.004 70)",
+          "oklch(84% 0.004 70)",
+          "oklch(95% 0.004 70)"
+        ]
+      },
+      "text-dark": {
+        "role": "primary",
+        "displayName": "Warm Ink (on dark)",
+        "canonical": "#e8e5df",
+        "tonalRamp": [
+          "oklch(15% 0.008 85)",
+          "oklch(26% 0.008 85)",
+          "oklch(38% 0.008 85)",
+          "oklch(50% 0.008 85)",
+          "oklch(62% 0.008 85)",
+          "oklch(74% 0.008 85)",
+          "oklch(86% 0.008 85)",
+          "oklch(95% 0.008 85)"
+        ]
+      },
+      "muted-dark": {
+        "role": "neutral",
+        "displayName": "Muted (on dark)",
+        "canonical": "#a39e96",
+        "tonalRamp": [
+          "oklch(15% 0.01 80)",
+          "oklch(26% 0.01 80)",
+          "oklch(38% 0.01 80)",
+          "oklch(50% 0.01 80)",
+          "oklch(62% 0.01 80)",
+          "oklch(74% 0.01 80)",
+          "oklch(86% 0.01 80)",
+          "oklch(95% 0.01 80)"
+        ]
+      },
+      "hairline-dark": {
+        "role": "neutral",
+        "displayName": "Hairline (on dark)",
+        "canonical": "#3b3936",
+        "tonalRamp": [
+          "oklch(15% 0.006 75)",
+          "oklch(26% 0.006 75)",
+          "oklch(38% 0.006 75)",
+          "oklch(50% 0.006 75)",
+          "oklch(62% 0.006 75)",
+          "oklch(74% 0.006 75)",
+          "oklch(86% 0.006 75)",
+          "oklch(95% 0.006 75)"
+        ]
+      },
+      "hairline-strong-dark": {
+        "role": "neutral",
+        "displayName": "Hairline Strong (on dark)",
+        "canonical": "#5a5752",
+        "tonalRamp": [
+          "oklch(15% 0.008 80)",
+          "oklch(26% 0.008 80)",
+          "oklch(38% 0.008 80)",
+          "oklch(50% 0.008 80)",
+          "oklch(62% 0.008 80)",
+          "oklch(74% 0.008 80)",
+          "oklch(86% 0.008 80)",
+          "oklch(95% 0.008 80)"
+        ]
+      },
+      "selection-dark": {
+        "role": "neutral",
+        "displayName": "Selection (on dark)",
+        "canonical": "#4a463f",
+        "tonalRamp": [
+          "oklch(15% 0.012 80)",
+          "oklch(26% 0.012 80)",
+          "oklch(38% 0.012 80)",
+          "oklch(50% 0.012 80)",
+          "oklch(62% 0.012 80)",
+          "oklch(74% 0.012 80)",
+          "oklch(86% 0.012 80)",
+          "oklch(95% 0.012 80)"
+        ]
+      },
+      "ground-light": {
+        "role": "neutral",
+        "displayName": "Warm Cream Ground",
+        "canonical": "#f4f1eb",
+        "tonalRamp": [
+          "oklch(15% 0.01 85)",
+          "oklch(26% 0.01 85)",
+          "oklch(38% 0.01 85)",
+          "oklch(50% 0.01 85)",
+          "oklch(62% 0.01 85)",
+          "oklch(74% 0.01 85)",
+          "oklch(86% 0.01 85)",
+          "oklch(96% 0.01 85)"
+        ]
+      },
+      "text-light": {
+        "role": "primary",
+        "displayName": "Warm Ink (on light)",
+        "canonical": "#1b1a19",
+        "tonalRamp": [
+          "oklch(15% 0.004 70)",
+          "oklch(24% 0.004 70)",
+          "oklch(36% 0.004 70)",
+          "oklch(48% 0.004 70)",
+          "oklch(60% 0.004 70)",
+          "oklch(72% 0.004 70)",
+          "oklch(84% 0.004 70)",
+          "oklch(95% 0.004 70)"
+        ]
+      },
+      "muted-light": {
+        "role": "neutral",
+        "displayName": "Muted (on light)",
+        "canonical": "#6b665e",
+        "tonalRamp": [
+          "oklch(15% 0.012 80)",
+          "oklch(26% 0.012 80)",
+          "oklch(38% 0.012 80)",
+          "oklch(50% 0.012 80)",
+          "oklch(62% 0.012 80)",
+          "oklch(74% 0.012 80)",
+          "oklch(86% 0.012 80)",
+          "oklch(95% 0.012 80)"
+        ]
+      },
+      "hairline-light": {
+        "role": "neutral",
+        "displayName": "Hairline (on light)",
+        "canonical": "#d9d3c9",
+        "tonalRamp": [
+          "oklch(15% 0.014 85)",
+          "oklch(26% 0.014 85)",
+          "oklch(38% 0.014 85)",
+          "oklch(50% 0.014 85)",
+          "oklch(62% 0.014 85)",
+          "oklch(74% 0.014 85)",
+          "oklch(86% 0.014 85)",
+          "oklch(95% 0.014 85)"
+        ]
+      },
+      "hairline-strong-light": {
+        "role": "neutral",
+        "displayName": "Hairline Strong (on light)",
+        "canonical": "#b8b1a5",
+        "tonalRamp": [
+          "oklch(15% 0.016 85)",
+          "oklch(26% 0.016 85)",
+          "oklch(38% 0.016 85)",
+          "oklch(50% 0.016 85)",
+          "oklch(62% 0.016 85)",
+          "oklch(74% 0.016 85)",
+          "oklch(86% 0.016 85)",
+          "oklch(95% 0.016 85)"
+        ]
+      },
+      "selection-light": {
+        "role": "neutral",
+        "displayName": "Selection (on light)",
+        "canonical": "#e3dccf",
+        "tonalRamp": [
+          "oklch(15% 0.02 85)",
+          "oklch(26% 0.02 85)",
+          "oklch(38% 0.02 85)",
+          "oklch(50% 0.02 85)",
+          "oklch(62% 0.02 85)",
+          "oklch(74% 0.02 85)",
+          "oklch(86% 0.02 85)",
+          "oklch(95% 0.02 85)"
+        ]
+      },
+      "accent-dark": "#8fd18a",
+      "accent-light": "#2e7d4f"
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The name at the top of the page only; 28px on phones."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Organization, project, and school names in rows; body size, weight 600."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Bio paragraphs and project summaries, capped at 62-64ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "The lowercase section name sitting on each box border."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Chip labels, tabular dates, role/location sub-lines, row links."
+      },
+      "fine": {
+        "displayName": "Fine",
+        "purpose": "Dot-separated tag lists and the footer, always muted."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-hover",
+        "value": "160ms ease-out",
+        "purpose": "Chip border/background and link underline color/offset on hover."
+      },
+      {
+        "name": "ease-press",
+        "value": "160ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Chip translateY(1px) on active."
+      },
+      {
+        "name": "theme-reveal",
+        "value": "520ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "View-transition clip-path circle from the theme toggle to the far corner; instant under prefers-reduced-motion or without startViewTransition."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "560px"
+      }
+    ],
+    "themes": [
+      {
+        "name": "dark",
+        "selector": ":root",
+        "colorScheme": "dark",
+        "themeColor": "#1b1a19"
+      },
+      {
+        "name": "light",
+        "selector": ":root[data-theme=\"light\"]",
+        "colorScheme": "light",
+        "themeColor": "#f4f1eb"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "The only button form: a hairline pill with a 16px stroke icon and a lowercase label; used for github, linkedin, email, and resume links.",
+      "html": "<a class=\"ds-chip\" href=\"#\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"m3.5 7 8.5 6 8.5-6\"/></svg>email</a>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 34px; padding: 5px 13px 5px 11px; border: 1px solid var(--hairline, #3b3936); border-radius: 999px; background: transparent; color: var(--text, #e8e5df); font-family: var(--font, Literata, 'Iowan Old Style', Palatino, Georgia, serif); font-size: 15px; line-height: 1; text-decoration: none; cursor: pointer; transition: border-color 160ms ease-out, background-color 160ms ease-out, transform 160ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-chip svg { width: 16px; height: 16px; flex: none; } .ds-chip:hover { border-color: var(--text, #e8e5df); background: color-mix(in srgb, var(--text, #e8e5df) 4%, transparent); } .ds-chip:active { transform: translateY(1px); } .ds-chip:focus-visible { outline: 2px solid var(--text, #e8e5df); outline-offset: 3px; }"
+    },
+    {
+      "name": "Icon Chip (theme toggle)",
+      "kind": "button",
+      "refersTo": "chip-icon",
+      "description": "34x34 icon-only chip at the end of the chip row; sun in dark, moon in light. Runs the circular theme reveal.",
+      "html": "<button type=\"button\" class=\"ds-chip ds-chip--icon\" aria-label=\"Switch to light theme\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41\"/></svg></button>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; border: 1px solid var(--hairline, #3b3936); border-radius: 999px; background: transparent; color: var(--text, #e8e5df); font: inherit; cursor: pointer; transition: border-color 160ms ease-out, background-color 160ms ease-out, transform 160ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-chip--icon { padding: 0; width: 34px; } .ds-chip svg { width: 16px; height: 16px; } .ds-chip:hover { border-color: var(--text, #e8e5df); background: color-mix(in srgb, var(--text, #e8e5df) 4%, transparent); } .ds-chip:active { transform: translateY(1px); } .ds-chip:focus-visible { outline: 2px solid var(--text, #e8e5df); outline-offset: 3px; }"
+    },
+    {
+      "name": "Section Box",
+      "kind": "card",
+      "refersTo": "box",
+      "description": "The signature container: a 1px hairline box whose lowercase h2 sits on the top border on a ground-colored patch.",
+      "html": "<section class=\"ds-box\"><h2>about</h2><p>Hi, I'm Toby. I study math and computing at Georgia Tech and build full-stack products with an ML habit.</p></section>",
+      "css": ".ds-box { position: relative; border: 1px solid var(--hairline, #3b3936); border-radius: 6px; padding: 26px 22px 22px; color: var(--text, #e8e5df); font-family: var(--font, Literata, 'Iowan Old Style', Palatino, Georgia, serif); font-size: 17px; line-height: 1.6; } .ds-box > h2 { position: absolute; top: 0; left: 14px; transform: translateY(-50%); margin: 0; padding: 0 7px; background: var(--ground, #1b1a19); color: var(--muted, #a39e96); font-size: 15px; font-weight: 500; letter-spacing: 0.01em; line-height: 1.2; } .ds-box p { margin: 0; max-width: 62ch; }"
+    },
+    {
+      "name": "Row",
+      "kind": "custom",
+      "refersTo": "box",
+      "description": "An experience/project entry inside a box: title and tabular date on a baseline, muted sub-line, hairline divider between rows.",
+      "html": "<ul class=\"ds-rows\"><li><div class=\"ds-row-head\"><h3 class=\"ds-row-title\">World Wide Technology</h3><span class=\"ds-row-when\">May 2026 \u2013 present</span></div><p class=\"ds-row-sub\">Software Engineer Intern<span class=\"ds-sep\">\u00b7</span>St. Louis, MO</p><ul class=\"ds-highlights\"><li>Drove the migration of the Sales Admin app from AngularJS/Grails to Vue 3/Node.js.</li></ul></li><li><div class=\"ds-row-head\"><h3 class=\"ds-row-title\">SiliconJackets</h3><span class=\"ds-row-when\">Aug 2025 \u2013 present</span></div><p class=\"ds-row-sub\">Digital Design Engineer<span class=\"ds-sep\">\u00b7</span>Atlanta, GA</p><ul class=\"ds-tags\"><li>SystemVerilog</li><li>RV32I</li></ul></li></ul>",
+      "css": ".ds-rows { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; color: var(--text, #e8e5df); font-family: var(--font, Literata, 'Iowan Old Style', Palatino, Georgia, serif); font-size: 17px; line-height: 1.6; } .ds-rows > li { padding-block: 18px; border-top: 1px solid var(--hairline, #3b3936); } .ds-rows > li:first-child { padding-top: 2px; border-top: 0; } .ds-rows > li:last-child { padding-bottom: 2px; } .ds-row-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; } .ds-row-title { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.25; } .ds-row-when { color: var(--muted, #a39e96); font-size: 15px; font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; } .ds-row-sub { margin: 2px 0 0; color: var(--muted, #a39e96); font-size: 15px; } .ds-sep { margin-inline: 0.45em; } .ds-highlights { list-style: disc; margin: 8px 0 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 6px; font-size: 15.5px; } .ds-highlights li::marker { color: var(--muted, #a39e96); } .ds-tags { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 0; color: var(--muted, #a39e96); font-size: 14.5px; } .ds-tags li { white-space: nowrap; } .ds-tags li + li::before { content: '\u00b7'; margin-inline: 0.5em; }"
+    },
+    {
+      "name": "Inline Link",
+      "kind": "nav",
+      "refersTo": "chip",
+      "description": "Text-colored link with a muted 1px underline that darkens and drops 1px on hover; the page's only link treatment.",
+      "html": "<p class=\"ds-copy\">Say hi on <a class=\"ds-link\" href=\"#\">LinkedIn</a> or by <a class=\"ds-link\" href=\"#\">email</a>.</p>",
+      "css": ".ds-copy { margin: 0; color: var(--text, #e8e5df); font-family: var(--font, Literata, 'Iowan Old Style', Palatino, Georgia, serif); font-size: 17px; line-height: 1.6; } .ds-link { color: inherit; text-decoration: underline; text-decoration-color: var(--hairline-strong, #5a5752); text-decoration-thickness: 1px; text-underline-offset: 0.18em; transition: text-decoration-color 160ms ease-out, text-underline-offset 160ms ease-out; } .ds-link:hover { text-decoration-color: var(--text, #e8e5df); text-underline-offset: 0.24em; } .ds-link:focus-visible { outline: 2px solid var(--text, #e8e5df); outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Photo Slot",
+      "kind": "custom",
+      "refersTo": "photo-slot",
+      "description": "120px hairline square (96px on phones) with a 3% text tint and a muted placeholder word until an image is supplied.",
+      "html": "<div class=\"ds-photo\"><span>photo</span></div>",
+      "css": ".ds-photo { width: 120px; height: 120px; border: 1px solid var(--hairline, #3b3936); border-radius: 6px; overflow: hidden; display: grid; place-items: center; color: var(--muted, #a39e96); font-family: var(--font, Literata, 'Iowan Old Style', Palatino, Georgia, serif); font-size: 14px; background: color-mix(in srgb, var(--text, #e8e5df) 3%, transparent); } .ds-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }"
+    },
+    {
+      "name": "Masthead",
+      "kind": "nav",
+      "refersTo": "chip",
+      "description": "Name at 32px/600, muted one-line tagline, then the chip row with the theme toggle pushed to the end.",
+      "html": "<header class=\"ds-masthead\"><h1>Toby Godat</h1><p class=\"ds-tagline\">software engineer \u00b7 full-stack / ML \u00b7 georgia tech '28</p><ul class=\"ds-chips\"><li><a class=\"ds-chip\" href=\"#\">github</a></li><li><a class=\"ds-chip\" href=\"#\">linkedin</a></li><li><a class=\"ds-chip\" href=\"#\">email</a></li><li><a class=\"ds-chip\" href=\"#\">resume</a></li><li class=\"ds-end\"><button type=\"button\" class=\"ds-chip ds-chip--icon\" aria-label=\"Switch theme\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41\"/></svg></button></li></ul></header>",
+      "css": ".ds-masthead { display: flex; flex-direction: column; gap: 18px; color: var(--text, #e8e5df); font-family: var(--font, Literata, 'Iowan Old Style', Palatino, Georgia, serif); font-size: 17px; line-height: 1.6; } .ds-masthead h1 { margin: 0; font-size: 32px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; } .ds-tagline { margin: -8px 0 0; color: var(--muted, #a39e96); } .ds-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; list-style: none; margin: 0; padding: 0; } .ds-end { margin-left: auto; } .ds-chip { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 34px; padding: 5px 13px 5px 11px; border: 1px solid var(--hairline, #3b3936); border-radius: 999px; background: transparent; color: inherit; font: inherit; font-size: 15px; line-height: 1; text-decoration: none; cursor: pointer; transition: border-color 160ms ease-out, background-color 160ms ease-out, transform 160ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-chip--icon { padding: 0; width: 34px; } .ds-chip svg { width: 16px; height: 16px; } .ds-chip:hover { border-color: var(--text, #e8e5df); background: color-mix(in srgb, var(--text, #e8e5df) 4%, transparent); } .ds-chip:active { transform: translateY(1px); } .ds-chip:focus-visible { outline: 2px solid var(--text, #e8e5df); outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Bordered Page",
+    "overview": "A personal portfolio that reads like a well-set page in a book rather than a product landing. One narrow column, one serif family at one body size, and four hairline boxes whose names are cut into their top edge. Nothing announces itself: no hero, no cards in a grid, no gradient, no eyebrow labels, no terminal costume. The content carries the page; the interface is a frame around it.\n\nThe material is warm paper in two exposures. By default the page is warm near-black with off-white ink; on request (or when the OS prefers it) it is warm cream with near-black ink. Both are the same six-token palette re-cast, and every incidental surface (selection, caret, scrollbar, focus ring) is tinted from that palette so the page has no foreign blue.\n\nDensity is comfortable-reading: 17px Literata at 1.6, a 600px measure, 36px between boxes. Motion is limited to one authored moment, the theme switch, which reveals the new page in a circle from the toggle; everything else is a 160ms ease-out on a hover.",
+    "keyCharacteristics": [
+      "Single 600px column with 20px side gutters, centered; no grid, no sidebars.",
+      "Hairline boxes (1px, 6px radius) with the lowercase section name sitting on the top border in the ground color.",
+      "One family everywhere: self-hosted Literata with optical sizing, falling back to Iowan Old Style / Palatino / Georgia.",
+      "Links are the text color with a muted 1px underline that darkens on hover; no accent hue exists.",
+      "Pill chips with a 16px stroke icon and a lowercase label are the only buttons.",
+      "Dark and light themes via `data-theme` with no flash on load; theme change is a circular view-transition reveal, instant under reduced motion."
+    ],
+    "rules": [
+      {
+        "name": "The No Accent Rule",
+        "body": "There is no brand hue. Emphasis is achieved by moving between ground, muted, hairline, and text; a link is text with a muted underline, a hovered chip is a text-colored border. Introducing a colored accent breaks the world.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Exposures Rule",
+        "body": "Dark and light are the same six roles swapped on `:root[data-theme]`, with `color-scheme` set to match. Never add a color that exists in only one theme.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tinted Chrome Rule",
+        "body": "Selection, caret, focus ring, and scrollbar are drawn from the palette (`::selection` uses selection + text, `scrollbar-color` uses hairline-strong, `:focus-visible` is a 2px text-colored outline offset 3px). Browser-default blue is never allowed to appear.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Literata at 400\u2013600 is the entire type system. No second family, no monospace, no uppercase tracking, no kicker or eyebrow line above a heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two-Size Rule",
+        "body": "Content runs at 17px; secondary information runs at 15px (14.5px for tag lists and the footer). Hierarchy inside a row comes from weight (600 vs 400) and color (text vs muted), not from more sizes.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Dates Rule",
+        "body": "Any date or range is set in tabular numerals and lives on the right edge of its row head; on phones it drops beneath the title, left-aligned.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Page Rule",
+        "body": "No `box-shadow`, no blur, no gradient, no translucent glass. If something needs to separate from the page, draw a hairline around it or tint it by at most 4% of the text color.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep every surface inside the 600px column with 20px gutters; new sections are another hairline box with a lowercase label on the top border, stacked 36px below the last.",
+      "Do set all type in Literata between 400 and 600 at 17px (content) or 15px (secondary), with dates in tabular numerals on the right of the row head.",
+      "Do make any new interactive element a pill chip (34px, 1px hairline, 16px stroke icon at 1.6, lowercase label) or an underlined inline link.",
+      "Do define any new color as a pair on `:root` and `:root[data-theme=\"light\"]` and pull it from the six existing roles wherever possible.",
+      "Do keep hover motion at 160ms ease-out and leave the theme reveal as the page's only animation; gate every animation behind `prefers-reduced-motion`.",
+      "Do tint system chrome (selection, caret, scrollbar, focus ring) from the palette."
+    ],
+    "donts": [
+      "Don't add a splash hero, a card grid, a gradient, a background image, a blur, or any box-shadow.",
+      "Don't add a kicker, eyebrow, or uppercase tracked label above a heading; the section name on the border is the only label form.",
+      "Don't introduce a second typeface, a monospace terminal treatment, or a colored accent hue.",
+      "Don't use more than the one 560px breakpoint or a second column wider than the photo slot.",
+      "Don't add scroll-triggered reveals, hover lifts, or transitions on non-interactive rows; experience and project rows are not links and have no hover state.",
+      "Don't ship a raster icon or an icon font; icons are inline SVG paths at a 24-unit viewBox."
+    ]
+  }
+}
