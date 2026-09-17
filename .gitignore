@@ -43,3 +43,7 @@ next-env.d.ts
 # Impeccable working files (keep PRODUCT.md, DESIGN.md, .impeccable/design.json, surfaces)
 .impeccable/review/
 .impeccable/questions/
+
+# Cloudflare / OpenNext build output
+.open-next/
+.wrangler/
