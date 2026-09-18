@@ -1,7 +1,6 @@
 "use client";
 
-import { useSyncExternalStore, type MouseEvent } from "react";
-import { MoonIcon, SunIcon } from "./Icons";
+import { useSyncExternalStore } from "react";
 
 type Theme = "dark" | "light";
 
@@ -16,45 +15,24 @@ function subscribe(onChange: () => void) {
   return () => observer.disconnect();
 }
 
-function apply(next: Theme) {
-  document.documentElement.dataset.theme = next;
-  try {
-    localStorage.setItem("theme", next);
-  } catch {
-    /* private mode: the choice just won't persist */
-  }
-}
-
+/** A word in the footer that swaps the theme instantly. */
 export function ThemeToggle() {
   // Server renders "dark"; the client reads the real attribute set before paint.
   const theme = useSyncExternalStore(subscribe, readTheme, () => "dark" as Theme);
+  const next: Theme = theme === "dark" ? "light" : "dark";
 
-  function onClick(e: MouseEvent<HTMLButtonElement>) {
-    const next: Theme = theme === "dark" ? "light" : "dark";
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const doc = document as Document & { startViewTransition?: (cb: () => void) => void };
-
-    if (reduce || !doc.startViewTransition) {
-      apply(next);
-      return;
+  function onClick() {
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem("theme", next);
+    } catch {
+      /* private mode: the choice just won't persist */
     }
-
-    // Circular reveal from the button: the page's one authored motion.
-    const r = e.currentTarget.getBoundingClientRect();
-    const x = r.left + r.width / 2;
-    const y = r.top + r.height / 2;
-    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-    const root = document.documentElement.style;
-    root.setProperty("--vt-x", `${x}px`);
-    root.setProperty("--vt-y", `${y}px`);
-    root.setProperty("--vt-r", `${radius}px`);
-    doc.startViewTransition(() => apply(next));
   }
 
-  const label = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
   return (
-    <button type="button" className="chip chip--icon" onClick={onClick} aria-label={label} title={label}>
-      {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+    <button type="button" className="theme" onClick={onClick} aria-label={`Switch to ${next} theme`}>
+      {next}
     </button>
   );
 }

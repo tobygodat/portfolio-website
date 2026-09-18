@@ -1,10 +1,9 @@
-import Link from "next/link";
-import { EducationRows } from "@/components/Rows";
-import { Section } from "@/components/Section";
-import { Terminal } from "@/components/Terminal";
-import { about, pages, site } from "@/content/site";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { about, education, experience, links, projects, site } from "@/content/site";
 
-function Rich({ parts }: { parts: (string | { text: string; href: string })[] }) {
+type Part = string | { text: string; href: string };
+
+function Rich({ parts }: { parts: Part[] }) {
   return (
     <>
       {parts.map((part, i) =>
@@ -20,57 +19,134 @@ function Rich({ parts }: { parts: (string | { text: string; href: string })[] })
   );
 }
 
-export default function AboutPage() {
+function Name({ name, href }: { name: string; href?: string }) {
+  if (!href) return <>{name}</>;
   return (
-    <Section id="about" title="about">
-      <Terminal
-        steps={[
-          {
-            cmd: "cat about.txt",
-            out: (
-              <div className="about">
-                <div className="about-text">
-                  {about.map((parts, i) => (
-                    <p key={i}>
-                      <Rich parts={parts} />
-                    </p>
-                  ))}
-                </div>
-                <div className="photo" aria-hidden={site.photo ? undefined : true}>
-                  {site.photo ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={site.photo} alt={`Photo of ${site.name}`} width={120} height={120} />
-                  ) : (
-                    <span>photo</span>
-                  )}
-                </div>
-              </div>
-            ),
-          },
-          {
-            cmd: "cat education.txt",
-            out: <EducationRows />,
-          },
-          {
-            cmd: "ls",
-            out: (
-              <ul className="ls" aria-label="Files and pages">
-                <li>about.txt</li>
-                <li>education.txt</li>
-                {pages
-                  .filter((p) => p.href !== "/")
-                  .map((p) => (
-                    <li key={p.slug}>
-                      <Link href={p.href} className="dir">
-                        {p.slug}/
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
-            ),
-          },
-        ]}
-      />
-    </Section>
+    <a href={href} target="_blank" rel="noreferrer">
+      {name}
+    </a>
+  );
+}
+
+function Joined({ items }: { items: string[] }) {
+  return (
+    <>
+      {items.map((item, i) => (
+        <span key={item}>
+          {i > 0 && " · "}
+          {item}
+        </span>
+      ))}
+    </>
+  );
+}
+
+export default function Page() {
+  return (
+    <main className="page">
+      <header>
+        {site.photo && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img className="photo" src={site.photo} alt={`Photo of ${site.name}`} width={96} height={96} />
+        )}
+        <h1>{site.name}</h1>
+        <p className="tagline">
+          {site.tagline.split(" · ").map((phrase, i) => (
+            <span key={phrase}>
+              {i > 0 && " · "}
+              <span className="nowrap">{phrase}</span>
+            </span>
+          ))}
+        </p>
+        <p className="contact">
+          {links.map((l, i) => (
+            <span key={l.href}>
+              {i > 0 && " · "}
+              <a href={l.href} target={l.href.startsWith("mailto:") ? undefined : "_blank"} rel="noreferrer">
+                {l.label}
+              </a>
+            </span>
+          ))}
+        </p>
+      </header>
+
+      <section id="about" className="bio" aria-label="About">
+        {about.map((parts, i) => (
+          <p key={i}>
+            <Rich parts={parts} />
+          </p>
+        ))}
+      </section>
+
+      <section id="experience" aria-labelledby="experience-title">
+        <h2 id="experience-title">experience</h2>
+        <ul className="list">
+          {experience.map((r) => (
+            <li key={r.org + r.role}>
+              <p className="line">
+                <span>
+                  <Name name={r.org} href={r.href} />
+                </span>
+                <span className="when">{r.dates}</span>
+              </p>
+              <p className="sub">
+                <Joined items={[r.role, r.location]} />
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title">projects</h2>
+        <ul className="list">
+          {projects.map((p) => (
+            <li key={p.name}>
+              <p className="line">
+                <span>{p.name}</span>
+                <span className="when">{p.context}</span>
+              </p>
+              <p className="summary">{p.summary}</p>
+              <p className="meta">
+                <Joined items={p.stack} />
+                {p.links.map((l) => (
+                  <span key={l.href}>
+                    {" · "}
+                    <a href={l.href} target="_blank" rel="noreferrer">
+                      {l.label}
+                    </a>
+                  </span>
+                ))}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="education" aria-labelledby="education-title">
+        <h2 id="education-title">education</h2>
+        <ul className="list">
+          <li>
+            <p className="line">
+              <span>
+                <Name name={education.school} href={education.href} />
+              </span>
+              <span className="when">{education.dates}</span>
+            </p>
+            <p className="sub">
+              <Joined items={[education.degree, education.detail, education.location]} />
+            </p>
+            <p className="meta">
+              <Joined items={education.coursework} />
+            </p>
+          </li>
+        </ul>
+      </section>
+
+      <footer className="footer">
+        <span>last updated {site.updated.toLowerCase()}</span>
+        <ThemeToggle />
+      </footer>
+    </main>
   );
 }

@@ -43,16 +43,6 @@ export const about: (string | { text: string; href: string })[][] = [
   ],
 ];
 
-/** Shell prompt shown on the about page. */
-export const prompt = "toby@gt:~$";
-
-/** The site's directory tree: one entry per page, in display order. Education lives inside about. */
-export const pages = [
-  { slug: "about", href: "/" },
-  { slug: "experience", href: "/experience" },
-  { slug: "projects", href: "/projects" },
-] as const;
-
 export type Role = {
   org: string;
   href?: string;
@@ -66,20 +56,20 @@ export const experience: Role[] = [
   {
     org: "World Wide Technology",
     href: "https://www.wwt.com/",
-    role: "Software Engineer Intern (part-time since Aug 2026)",
-    dates: "May 2026 – present",
+    role: "Software Engineer Intern (part-time since Aug\u00A02026)",
+    dates: "May\u00A02026 – present",
     location: "St. Louis, MO",
   },
   {
     org: "Tech Healthcare Consulting @ GT",
     role: "Project Manager",
-    dates: "Aug 2026 – present",
+    dates: "Aug\u00A02026 – present",
     location: "Atlanta, GA",
   },
   {
     org: "SiliconJackets",
     role: "Digital Design Engineer",
-    dates: "Aug 2025 – present",
+    dates: "Aug\u00A02025 – present",
     location: "Atlanta, GA",
   },
 ];
@@ -96,7 +86,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     name: "orbitOS",
-    context: "Sep 2026",
+    context: "Sep\u00A02026",
     summary:
       "A productivity app with an editable weekly Google Calendar view and an in-app Google Drive PDF reader, backed by Supabase Postgres and Vercel serverless functions.",
     stack: ["React", "TypeScript", "Python", "Supabase"],
@@ -105,7 +95,7 @@ export const projects: Project[] = [
   },
   {
     name: "Baskr",
-    context: "UC Berkeley AI Hackathon, Jun 2026",
+    context: "UC Berkeley AI Hackathon, Jun\u00A02026",
     summary:
       "An agentic research platform built in 36 hours: OpenAI embeddings, Redis vector search, and Claude classify papers against persistent lab memory, fed by a 6-source Redis Streams pipeline and checked by 350+ automated tests.",
     stack: ["Python", "FastAPI", "React", "TypeScript", "Redis", "Docker"],
@@ -114,7 +104,7 @@ export const projects: Project[] = [
   },
   {
     name: "CartWatch",
-    context: "HackGT 12, Sep 2025",
+    context: "HackGT 12, Sep\u00A02025",
     summary:
       "A financial insights app and companion Chrome extension: P10/P50/P90 balance projections from 1,000-run Monte Carlo simulations over Capital One Nessie transaction data.",
     stack: ["React", "Python", "AWS Amplify", "Cloud Firestore"],
@@ -126,9 +116,9 @@ export const education = {
   school: "Georgia Institute of Technology",
   href: "https://www.gatech.edu/",
   degree: "B.S. in Mathematics and Computing",
-  dates: "expected May 2028",
+  dates: "expected May\u00A02028",
   location: "Atlanta, GA",
-  detail: "GPA 4.0 / 4.0",
+  detail: "GPA 4.0\u00A0/\u00A04.0",
   coursework: [
     "Data Structures & Algorithms",
     "Machine Learning",

@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Next.js / React (user's choice). Static export is fine; no server features required. Deploy target undecided (Vercel is the natural fit).
+Next.js / React (user's choice). Static export is fine; no server features required. Deployed to Cloudflare Workers via OpenNext (wrangler.jsonc, open-next.config.ts).
 
 ## Users
 
@@ -28,7 +28,7 @@ Linked from resume, GitHub profile, and LinkedIn. Read once, quickly. Updated by
 
 ## Capabilities and Constraints
 
-- Sections confirmed: About/intro with photo, Experience timeline, Projects, plus a short Education box from the resume. Fun extras were offered and then dropped by Toby ("leave them out for now").
+- Sections confirmed (revised Sep 17 2026): About/intro (a photo appears only once Toby supplies one), Experience, Projects, and Education from the resume, all on one page. Fun extras were offered and then dropped by Toby ("leave them out for now").
 - Links confirmed: GitHub https://github.com/tobygodat/, LinkedIn https://www.linkedin.com/in/tobygodat/, email tobygodat@gmail.com. The resume PDF and the per-role bullet points were removed from the site at Toby's request (Sep 17 2026); roles show org, title, dates, and location only.
 - Phone number from the resume must NOT appear on the site.
 - Dark mode is welcome (the reference has it) but not required.
@@ -38,17 +38,18 @@ Linked from resume, GitHub profile, and LinkedIn. Read once, quickly. Updated by
 
 - Name shown: Toby Godat.
 - Voice: casual, first person, lowercase-friendly, like andrewvu.me. Not corporate.
-- Reference the user likes: https://andrewvu.me/ (cream ground, boxed sections labeled like shell commands, chip-style link buttons, single column, dark mode toggle). Binding as spirit and structure, not as visual identity.
-- Visual direction (user's standing choice, Sep 17 2026): the category standard, played straight. Layout in the manner of andrewvu.me (single column, boxed sections with a label on the border, chip-style link buttons, dark mode) with the quieter aesthetic of leerob.com as it is today (warm near-black or warm paper, a book serif, small restrained type, underlined links, minimal chrome). No themed visual world; craft level of those two sites is the bar.
+- Reference the user liked at the start: https://andrewvu.me/ (single column, dark mode toggle). Binding as spirit only; its boxed sections and chip buttons were dropped on Sep 17 2026.
+- Visual direction (standing, Sep 17 2026): plain text. Warm near-black or warm paper, Literata, 17px body, links as underlined words in one green, hairline-separated lists with right-aligned dates; no boxes, chips, icons, nav, or motion. leerob.com is the craft bar.
 - Hobbies (philosophy, reading, discussing things with people) are confirmed facts but Toby chose to leave them off the site for now.
-- Structure (Sep 17 2026): the site mirrors a Linux home directory. Each section is its own route labeled as a path (~/about, ~/experience, ~/projects, in that order; education lives on the about page), navigated from a floating directory-tree menu on the left. Toby asked for a blue or green accent; green was chosen and is the single accent color. The about page reads as a shell session (cat about.txt, cat education.txt, ls) that types itself on first visit.
+- Structure (Sep 17 2026, revised later that day): one page at `/` with about, experience, projects, and education in that order; `/experience`, `/projects`, and `/education` redirect to their anchors. The earlier Linux home-directory routes, tree nav, and typed shell session were removed. Green is the single accent.
+- Standing preference (Sep 17 2026, later that day): the Linux home-directory structure, tree nav, and shell-session page were dropped as a "dev workflow" costume. Toby took the category standard on the decision page and asked for plain text with the same palette and Literata: one page, name, one line, links as words, prose, and three headed lists; no boxes, chips, icons, or nav; no animation of any kind (typing playback, blinking cursor, and the theme reveal are all out). leerob.com is the craft bar; andrewvu.me binds structure only. /experience and /projects redirect to anchors.
 - Bio copy comes from Toby's LinkedIn About section (headline: "CS + Math @ Georgia Tech | Part-Time SWE @ WWT"; based in St. Louis, MO).
 
 ## Evidence on Hand
 
 Source: resume at C:\Users\tobyg\Downloads\Career\Resumes\tobygodat_resume_final_v3.pdf (Sep 13, 2026). All facts below are from it.
 
-Education: Georgia Institute of Technology, Atlanta, GA. B.S. in Mathematics and Computing, GPA 4.0/4.0, expected May 2028.
+Education: Georgia Institute of Technology, Atlanta, GA. B.S. in Mathematics and Computing, GPA 4.0/4.0, expected May 2028. Relevant coursework (resume): Data Structures & Algorithms, Linear Algebra, Object-Oriented Programming, Applied Combinatorics, Machine Learning, Foundations of Math and Computing, Second Course in Linear Algebra; the site lists the first five.
 
 Experience:
 - World Wide Technology, St. Louis, MO. Software Engineer Intern, May 2026 – Present (part-time since Aug 2026). Migrated Sales Admin app from AngularJS/Grails to Vue 3/Node.js across 11 business modules; cut median response time across 50+ Node REST endpoints from 340 ms to 100 ms via Oracle connection pooling and SQL optimization; built AI-assisted dev workflow with Claude Code and legacy-parity agents for regression testing and PR validation (est. 22% less migration/triage time).
@@ -62,7 +63,7 @@ Projects:
 
 Skills: Java, Python, TypeScript/JavaScript, SQL, C, HTML/CSS, SystemVerilog. React, Vue.js, AngularJS, Node.js, Grails, FastAPI. Git, Docker, GitHub Actions, Codefresh, AWS Amplify, Cloud Firestore, Vercel, Render.
 
-Absences (must not be fabricated): no photo supplied yet (placeholder slot, labeled); orbitOS repo is https://github.com/tobygodat/tobiOS (from local git remote); Baskr and CartWatch repo URLs unconfirmed; hobbies confirmed by Toby: philosophy, reading, discussing things with people (specific books, thinkers, or reading-group details NOT supplied; any named titles in fun-extras are labeled placeholders for Toby to replace); no motto, music, or travel facts supplied; no testimonials, press, or metrics beyond the resume.
+Absences (must not be fabricated): no photo supplied yet (the page shows none until `site.photo` is set); orbitOS repo is https://github.com/tobygodat/tobiOS (from local git remote); Baskr and CartWatch repo URLs unconfirmed; hobbies confirmed by Toby: philosophy, reading, discussing things with people (specific books, thinkers, or reading-group details NOT supplied; any named titles in fun-extras are labeled placeholders for Toby to replace); no motto, music, or travel facts supplied; no testimonials, press, or metrics beyond the resume.
 
 ## Product Principles
 
