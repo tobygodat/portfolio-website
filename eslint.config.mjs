@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated Cloudflare bundles and local browser verification output.
+    ".open-next/**",
+    ".wrangler/**",
+    ".playwright-cli/**",
   ]),
 ]);
 

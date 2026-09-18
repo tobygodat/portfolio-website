@@ -1,4 +1,5 @@
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { SectionTabs } from "@/components/SectionTabs";
 import { about, education, experience, links, projects, site } from "@/content/site";
 
 type Part = string | { text: string; href: string };
@@ -70,78 +71,87 @@ export default function Page() {
         </p>
       </header>
 
-      <section id="about" className="bio" aria-label="About">
-        {about.map((parts, i) => (
-          <p key={i}>
-            <Rich parts={parts} />
-          </p>
-        ))}
-      </section>
+      <SectionTabs>
+        <section id="about" className="bio" aria-label="About">
+          {about.map((parts, i) => (
+            <p key={i}>
+              <Rich parts={parts} />
+            </p>
+          ))}
+          <figure className="branch-study">
+            {/* Decorative generated artwork, kept independent of portfolio facts. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/recursion-tree.png" alt="" width={2000} height={800} />
+            <figcaption>small ideas, many branches.</figcaption>
+          </figure>
+        </section>
 
-      <section id="experience" aria-labelledby="experience-title">
-        <h2 id="experience-title">experience</h2>
-        <ul className="list">
-          {experience.map((r) => (
-            <li key={r.org + r.role}>
+        <section id="experience" aria-labelledby="experience-title">
+          <h2 id="experience-title">experience</h2>
+          <ul className="list">
+            {experience.map((r) => (
+              <li key={r.org + r.role}>
+                <p className="line">
+                  <span>
+                    <Name name={r.org} href={r.href} />
+                  </span>
+                  <span className="when">{r.dates}</span>
+                </p>
+                <p className="sub">
+                  <Joined items={[r.role, r.location]} />
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="projects" aria-labelledby="projects-title">
+          <h2 id="projects-title">projects</h2>
+          <ul className="list">
+            {projects.map((p) => (
+              <li key={p.name}>
+                <p className="line">
+                  <span>{p.name}</span>
+                  <span className="when">{p.context}</span>
+                </p>
+                <p className="summary">{p.summary}</p>
+                <p className="meta">
+                  <Joined items={p.stack} />
+                  {p.links.map((l) => (
+                    <span key={l.href}>
+                      {" · "}
+                      <a href={l.href} target="_blank" rel="noreferrer">
+                        {l.label}
+                      </a>
+                    </span>
+                  ))}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section id="education" aria-labelledby="education-title">
+          <h2 id="education-title">education</h2>
+          <ul className="list">
+            <li>
               <p className="line">
                 <span>
-                  <Name name={r.org} href={r.href} />
+                  <Name name={education.school} href={education.href} />
                 </span>
-                <span className="when">{r.dates}</span>
+                <span className="when">{education.dates}</span>
               </p>
               <p className="sub">
-                <Joined items={[r.role, r.location]} />
+                <Joined items={[education.degree, education.detail, education.location]} />
               </p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section id="projects" aria-labelledby="projects-title">
-        <h2 id="projects-title">projects</h2>
-        <ul className="list">
-          {projects.map((p) => (
-            <li key={p.name}>
-              <p className="line">
-                <span>{p.name}</span>
-                <span className="when">{p.context}</span>
-              </p>
-              <p className="summary">{p.summary}</p>
               <p className="meta">
-                <Joined items={p.stack} />
-                {p.links.map((l) => (
-                  <span key={l.href}>
-                    {" · "}
-                    <a href={l.href} target="_blank" rel="noreferrer">
-                      {l.label}
-                    </a>
-                  </span>
-                ))}
+                <Joined items={education.coursework} />
               </p>
             </li>
-          ))}
-        </ul>
-      </section>
+          </ul>
+        </section>
 
-      <section id="education" aria-labelledby="education-title">
-        <h2 id="education-title">education</h2>
-        <ul className="list">
-          <li>
-            <p className="line">
-              <span>
-                <Name name={education.school} href={education.href} />
-              </span>
-              <span className="when">{education.dates}</span>
-            </p>
-            <p className="sub">
-              <Joined items={[education.degree, education.detail, education.location]} />
-            </p>
-            <p className="meta">
-              <Joined items={education.coursework} />
-            </p>
-          </li>
-        </ul>
-      </section>
+      </SectionTabs>
 
       <footer className="footer">
         <span>last updated {site.updated.toLowerCase()}</span>

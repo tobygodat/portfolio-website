@@ -168,6 +168,76 @@ p + p {
   margin-top: var(--space-lg);
 }
 
+/* Quiet tabs: the same type and ink, with a green active underline. */
+.sections {
+  margin-top: var(--space-lg);
+}
+.section-tabs {
+  display: flex;
+  gap: 28px;
+  border-bottom: 1px solid var(--hairline);
+}
+.section-tabs button {
+  position: relative;
+  border: 0;
+  padding: 10px 0 13px;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+.section-tabs button:hover,
+.section-tabs button[aria-selected="true"] {
+  color: var(--text);
+}
+.section-tabs button[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background: var(--accent);
+  inset: auto 0 -1px;
+}
+.section-panel {
+  padding-top: 28px;
+  min-height: 360px;
+}
+.section-panel .bio,
+.section-panel h2 {
+  margin-top: 0;
+}
+.section-panel h2::before {
+  content: "// ";
+  color: var(--accent);
+  font-weight: 400;
+}
+.section-panel .list > li {
+  padding-block: 18px;
+}
+.section-panel .list > li:first-child {
+  border-top: 0;
+  padding-top: 4px;
+}
+.branch-study {
+  margin-top: 28px;
+  text-align: center;
+}
+.branch-study img {
+  display: block;
+  width: 280px;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
+:root:not([data-theme="light"]) .branch-study img {
+  filter: brightness(1.9) saturate(0.65);
+}
+.branch-study figcaption {
+  color: var(--muted);
+  font-size: var(--size-small);
+  font-style: italic;
+  margin-top: 4px;
+}
+
 /* Lists: hairline-separated lines, date on the right. */
 .list {
   list-style: none;
@@ -221,6 +291,8 @@ p + p {
 /* Footer: a muted line with the theme word at its end. */
 .footer {
   margin-top: var(--space-lg);
+  border-top: 1px solid var(--hairline);
+  padding-top: var(--space-md);
   display: flex;
   justify-content: space-between;
   gap: var(--space-md);
@@ -258,5 +330,29 @@ p + p {
   .when {
     text-align: left;
     white-space: normal;
+  }
+  .section-tabs {
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .section-tabs button {
+    font-size: var(--size-small);
+  }
+  .section-panel {
+    min-height: 0;
+  }
+}
+
+@media print {
+  .section-tabs,
+  .theme,
+  .branch-study {
+    display: none;
+  }
+  .section-panel[hidden] {
+    display: block;
+  }
+  .section-panel {
+    min-height: 0;
   }
 }
