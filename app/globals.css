@@ -217,26 +217,6 @@ p + p {
   border-top: 0;
   padding-top: 4px;
 }
-.branch-study {
-  margin-top: 28px;
-  text-align: center;
-}
-.branch-study img {
-  display: block;
-  width: 280px;
-  max-width: 100%;
-  height: auto;
-  margin-inline: auto;
-}
-:root:not([data-theme="light"]) .branch-study img {
-  filter: brightness(1.9) saturate(0.65);
-}
-.branch-study figcaption {
-  color: var(--muted);
-  font-size: var(--size-small);
-  font-style: italic;
-  margin-top: 4px;
-}
 
 /* Lists: hairline-separated lines, date on the right. */
 .list {
@@ -345,8 +325,7 @@ p + p {
 
 @media print {
   .section-tabs,
-  .theme,
-  .branch-study {
+  .theme {
     display: none;
   }
   .section-panel[hidden] {
