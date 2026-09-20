@@ -43,34 +43,36 @@ export const about: (string | { text: string; href: string })[][] = [
   ],
 ];
 
-export type Role = {
-  org: string;
-  href?: string;
+export type Position = {
   role: string;
   /** e.g. "May 2026 – present" */
   dates: string;
   location: string;
 };
 
+export type Role = {
+  org: string;
+  href?: string;
+  /** One or more roles at the same place, newest first. */
+  positions: Position[];
+};
+
 export const experience: Role[] = [
   {
     org: "World Wide Technology",
     href: "https://www.wwt.com/",
-    role: "Software Engineer Intern (part-time since Aug\u00A02026)",
-    dates: "May\u00A02026 – present",
-    location: "St. Louis, MO",
+    positions: [
+      { role: "Software Engineer (part-time)", dates: "Aug\u00A02026 – present", location: "St. Louis, MO" },
+      { role: "Software Engineer Intern", dates: "May\u00A02026 – Aug\u00A02026", location: "St. Louis, MO" },
+    ],
   },
   {
     org: "Tech Healthcare Consulting @ GT",
-    role: "Project Manager",
-    dates: "Aug\u00A02026 – present",
-    location: "Atlanta, GA",
+    positions: [{ role: "Project Manager", dates: "Aug\u00A02026 – present", location: "Atlanta, GA" }],
   },
   {
     org: "SiliconJackets",
-    role: "Digital Design Engineer",
-    dates: "Aug\u00A02025 – present",
-    location: "Atlanta, GA",
+    positions: [{ role: "Digital Design Engineer", dates: "Aug\u00A02025 – present", location: "Atlanta, GA" }],
   },
 ];
 
