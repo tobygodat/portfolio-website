@@ -78,12 +78,6 @@ export default function Page() {
               <Rich parts={parts} />
             </p>
           ))}
-          <figure className="branch-study">
-            {/* Decorative generated artwork, kept independent of portfolio facts. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/recursion-tree.png" alt="" width={2000} height={800} />
-            <figcaption>small ideas, many branches.</figcaption>
-          </figure>
         </section>
 
         <section id="experience" aria-labelledby="experience-title">
