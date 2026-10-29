@@ -100,7 +100,7 @@ A personal site that is only its words. One 600px column of Literata on warm pap
 
 The material is warm paper in two exposures. By default the ground is warm near-black with off-white ink; when the OS prefers it, or when the visitor clicks the word in the footer, it is warm cream with near-black ink. Both exposures are the same seven roles swapped on `:root[data-theme]`, and every incidental browser surface (selection, caret, scrollbar, focus ring) is drawn from those roles so no foreign blue ever appears.
 
-There is no motion of any kind. Hover changes a color instantly; the theme switch swaps instantly. Density is comfortable reading: 17px at 1.6, paragraphs capped at 62ch, 40px before each heading, 12px of padding around each list line.
+The only motion is a small ASCII flock (`\v/`, `~v~`, `-v-`, and single `v` strokes) crossing the viewport behind everything in the muted ink at 40–60% opacity (Toby, Oct 29 2026). Nothing else moves. Hover changes a color instantly; the theme switch swaps instantly. Density is comfortable reading: 17px at 1.6, paragraphs capped at 62ch, 40px before each heading, 12px of padding around each list line.
 
 **Key Characteristics:**
 - Single 600px column with 20px gutters, 64px from the top of the viewport (40px on phones); no grid, no sidebars, no nav.
@@ -108,7 +108,7 @@ There is no motion of any kind. Hover changes a color instantly; the theme switc
 - Links are words in the text color with a 1px green underline; the word turns green on hover. Green appears nowhere else except the focus ring.
 - Lists are lines separated by 1px hairlines with a right-aligned, muted, tabular date that stacks under the name on phones.
 - Dark and light are the same palette re-cast on `data-theme`, restored before paint so there is no flash; the toggle is the word "light" or "dark" in the footer.
-- No animation, no transition, no shadow, no box, no icon.
+- No animation or transition except the background flock; no shadow, no icon.
 
 ## Colors
 
@@ -169,7 +169,7 @@ No shadows, no tints, no layering. The page is flat text on one ground; the only
 ### Named Rules
 **The Nothing Drawn Rule.** No `box-shadow`, blur, gradient, background image, fill, or border on anything except the 1px hairline above and below list items. If a new element needs separation, it gets a hairline or a heading, never a surface.
 
-**The No Motion Rule.** No `transition`, `animation`, view transition, or scroll-triggered effect anywhere, including hover and the theme switch. There is nothing to gate behind `prefers-reduced-motion` because nothing moves.
+**The One Flock Rule.** The ASCII birds in `components/Birds.tsx` are the only motion: a fixed layer behind the page, `aria-hidden`, no pointer events, transform-only movement, hidden in print. Under `prefers-reduced-motion` they hold still with wings level, and they stop while the tab is hidden. No other `transition`, `animation`, view transition, or scroll-triggered effect anywhere, including hover and the theme switch.
 
 ## Shapes
 
@@ -219,5 +219,5 @@ A `<button>` reset to inherit its font and color, so it reads as a word in the f
 - **Don't** add an icon of any kind, raster or SVG; links are words.
 - **Don't** add a nav, sidebar, hero, kicker, eyebrow, or uppercase tracked label; the lowercase 17px/600 heading is the only label form.
 - **Don't** use green on anything but link underlines, link hover, and the focus ring; never on headings, dates, tags, or prose.
-- **Don't** add a transition, animation, or view transition anywhere, including hover states and the theme switch.
+- **Don't** add a transition, animation, or view transition anywhere beyond the background flock, including hover states and the theme switch. Don't make the birds louder, faster, or interactive.
 - **Don't** introduce a second typeface, a monospace treatment, italics, or a fourth type size; use more than the one 560px breakpoint.
