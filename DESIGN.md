@@ -100,7 +100,7 @@ A personal site that is only its words. One 600px column of Literata on warm pap
 
 The material is warm paper in two exposures. By default the ground is warm near-black with off-white ink; when the OS prefers it, or when the visitor clicks the word in the footer, it is warm cream with near-black ink. Both exposures are the same seven roles swapped on `:root[data-theme]`, and every incidental browser surface (selection, caret, scrollbar, focus ring) is drawn from those roles so no foreign blue ever appears.
 
-The only motion is a small ASCII flock (`\v/`, `~v~`, `-v-`, and single `v` strokes) crossing the viewport behind everything in the muted ink at 40–60% opacity (Toby, Oct 29 2026). Nothing else moves. Hover changes a color instantly; the theme switch swaps instantly. Density is comfortable reading: 17px at 1.6, paragraphs capped at 62ch, 40px before each heading, 12px of padding around each list line.
+The only motion is a flock of big ASCII gulls crossing the viewport behind everything: each bird is a field of muted glyphs on a canvas, dense (`%#@8`) at the body and sparse (`.':`) at the edges, after horizonx.so's kurage dashboard (Toby, Oct 29 2026). They fade to about a third inside the content boxes and the sidebar so words stay on top. Nothing else moves. Hover changes a color instantly; the theme switch swaps instantly. Density is comfortable reading: 17px at 1.6, paragraphs capped at 62ch, 40px before each heading, 12px of padding around each list line.
 
 **Key Characteristics:**
 - Single 600px column with 20px gutters, 64px from the top of the viewport (40px on phones); no grid, no sidebars, no nav.
@@ -169,7 +169,7 @@ No shadows, no tints, no layering. The page is flat text on one ground; the only
 ### Named Rules
 **The Nothing Drawn Rule.** No `box-shadow`, blur, gradient, background image, fill, or border on anything except the 1px hairline above and below list items. If a new element needs separation, it gets a hairline or a heading, never a surface.
 
-**The One Flock Rule.** The ASCII birds in `components/Birds.tsx` are the only motion: a fixed layer behind the page, `aria-hidden`, no pointer events, transform-only movement, hidden in print. Under `prefers-reduced-motion` they hold still with wings level, and they stop while the tab is hidden. No other `transition`, `animation`, view transition, or scroll-triggered effect anywhere, including hover and the theme switch.
+**The One Flock Rule.** The ASCII birds in `components/Birds.tsx` are the only motion: one fixed canvas behind the page, `aria-hidden`, no pointer events, redrawn at 30fps in the muted ink, hidden in print. Under `prefers-reduced-motion` they are drawn once, still, wings out in a glide, with no shimmer, and they stop while the tab is hidden. No other `transition`, `animation`, view transition, or scroll-triggered effect anywhere, including hover and the theme switch.
 
 ## Shapes
 

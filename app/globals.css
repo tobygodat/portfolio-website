@@ -134,37 +134,19 @@ p + p {
   margin-top: var(--space-md);
 }
 
-/* Birds: a small ASCII flock crossing behind the page. Muted, never in the way. */
+/* Birds: big ASCII gulls drawn as glyph fields on a canvas behind the page. Never in the way. */
 .birds {
   position: fixed;
   inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
-  overflow: hidden;
   pointer-events: none;
-  user-select: none;
-  contain: strict;
-}
-.bird {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 12px;
-  line-height: 1;
-  white-space: pre;
-  color: var(--muted);
   opacity: 0;
-  transition: opacity 900ms cubic-bezier(0.23, 1, 0.32, 1);
-  will-change: transform;
+  transition: opacity 1200ms cubic-bezier(0.23, 1, 0.32, 1);
 }
-.bird-near {
-  font-size: 16px;
-}
-.bird.is-in {
-  opacity: 0.4;
-}
-.bird-near.is-in {
-  opacity: 0.6;
+.birds.is-in {
+  opacity: 1;
 }
 
 /* Page: a sidebar of words beside the content. */
@@ -427,16 +409,6 @@ p + p {
     --space-top: 40px;
     --space-bottom: 40px;
     --space-lg: 32px;
-  }
-  /* Text fills a phone, so the flock gets smaller and quieter. */
-  .bird-near {
-    font-size: 13px;
-  }
-  .bird.is-in {
-    opacity: 0.3;
-  }
-  .bird-near.is-in {
-    opacity: 0.45;
   }
   .line {
     flex-direction: column;
