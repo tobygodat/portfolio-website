@@ -1,6 +1,6 @@
 /**
  * Everything on the site lives here. Edit this file, not the components.
- * Facts come from the resume (Sep 2026); keep them true.
+ * Facts come from the resume and Notion (Oct 2026); keep them true.
  */
 
 export const site = {
@@ -9,11 +9,11 @@ export const site = {
   tagline: "cs + math @ georgia tech · part-time swe @ wwt",
   /** Browser tab and link previews. */
   description:
-    "Toby Godat is a software engineer and math & computing student at Georgia Tech, building full-stack and ML products.",
+    "Toby Godat is a software engineer and math & computing student at Georgia Tech, building developer tools and full-stack products.",
   /** Set to a path in /public (e.g. "/me.jpg") once you add a photo. */
   photo: null as string | null,
   /** Shown in the page footer. */
-  updated: "September 2026",
+  updated: "October 2026",
 };
 
 export type LinkKind = "github" | "linkedin" | "mail";
@@ -30,7 +30,7 @@ export const about: (string | { text: string; href: string })[][] = [
     "Hi, I'm Toby, an undergraduate mathematics and computer science major at Georgia Tech! I'm very passionate about software development, machine learning, computer architecture, and anything else related to innovation in science and technology.",
   ],
   [
-    "Right now I'm a part-time software engineer at ",
+    "Right now I'm a part-time software engineering intern at ",
     { text: "World Wide Technology", href: "https://www.wwt.com/" },
     " while studying in Atlanta, and I'm based in St. Louis when I'm home.",
   ],
@@ -62,17 +62,13 @@ export const experience: Role[] = [
     org: "World Wide Technology",
     href: "https://www.wwt.com/",
     positions: [
-      { role: "Software Engineer (part-time)", dates: "Aug\u00A02026 – present", location: "St. Louis, MO" },
+      { role: "Software Engineer Intern (part-time)", dates: "Aug\u00A02026 – present", location: "St. Louis, MO" },
       { role: "Software Engineer Intern", dates: "May\u00A02026 – Aug\u00A02026", location: "St. Louis, MO" },
     ],
   },
   {
     org: "Tech Healthcare Consulting @ GT",
-    positions: [{ role: "Project Manager", dates: "Aug\u00A02026 – present", location: "Atlanta, GA" }],
-  },
-  {
-    org: "SiliconJackets",
-    positions: [{ role: "Digital Design Engineer", dates: "Aug\u00A02025 – present", location: "Atlanta, GA" }],
+    positions: [{ role: "Co-founder & Tech Lead", dates: "Aug\u00A02026 – present", location: "Atlanta, GA" }],
   },
 ];
 
@@ -85,32 +81,37 @@ export type Project = {
   links: { label: string; href: string }[];
 };
 
+/** Only the projects with the strongest signal, matching the current resume. */
 export const projects: Project[] = [
   {
-    name: "orbitOS",
-    context: "Sep\u00A02026",
+    name: "Fiada",
+    context: "1st place, HackGT\u00A013 · Sep\u00A02026",
     summary:
-      "A productivity app with an editable weekly Google Calendar view and an in-app Google Drive PDF reader, backed by Supabase Postgres and Vercel serverless functions.",
-    stack: ["React", "TypeScript", "Python", "Supabase"],
-    // The repo (github.com/tobygodat/tobiOS) is private right now; add { label: "github", href } once it is public.
+      "A zoomable map of a codebase that sorts and explains itself and lights up where your coding agent is working. It matched 81 of 88 frontend HTTP calls to backend routes in Outline with no wrong matches, and a Canvas renderer cut zoom frame time from about 60 to 17 ms on a 13K-node map.",
+    stack: ["TypeScript", "React", "Fastify", "tree-sitter", "MCP"],
+    links: [
+      { label: "site", href: "https://fiada.tech" },
+      { label: "github", href: "https://github.com/tobygodat/fiada" },
+      { label: "npm", href: "https://www.npmjs.com/package/@fiadatech/agent" },
+    ],
+  },
+  {
+    name: "Keystone",
+    context: "Oct\u00A02026",
+    summary:
+      "A native desktop client for Claude Code and Codex that drives the installed CLIs directly. Sessions live in an append-only SQLite event log, crash recovery never resends an interrupted request, and an MCP server lets agents orchestrate each other across providers.",
+    stack: ["Rust", "GPUI", "SQLite", "MCP"],
+    // The repo (github.com/tobygodat/keystone) is private; add { label: "github", href } once it is public.
     links: [],
   },
   {
-    name: "Baskr",
-    context: "UC Berkeley AI Hackathon, Jun\u00A02026",
+    name: "Stilltype",
+    context: "Sep\u00A02026 – present",
     summary:
-      "An agentic research platform built in 36 hours: OpenAI embeddings, Redis vector search, and Claude classify papers against persistent lab memory, fed by a 6-source Redis Streams pipeline and checked by 350+ automated tests.",
-    stack: ["Python", "FastAPI", "React", "TypeScript", "Redis", "Docker"],
-    // Add { label: "github", href: "..." } or { label: "devpost", href: "..." } when you have the links.
-    links: [],
-  },
-  {
-    name: "CartWatch",
-    context: "HackGT 12, Sep\u00A02025",
-    summary:
-      "A financial insights app and companion Chrome extension: P10/P50/P90 balance projections from 1,000-run Monte Carlo simulations over Capital One Nessie transaction data.",
-    stack: ["React", "Python", "AWS Amplify", "Cloud Firestore"],
-    links: [],
+      "Typing practice for people who already touch type: it finds weak letter pairs, drills them, and retests on text you haven't seen. Rendering only the text near the cursor halved p95 keydown-to-paint latency from 64 to 32 ms.",
+    stack: ["JavaScript", "PostgreSQL", "Supabase", "Cloudflare Workers"],
+    // The repo (github.com/tobygodat/typingsite) is private.
+    links: [{ label: "live app", href: "https://stilltype.tobygodat.workers.dev" }],
   },
 ];
 
