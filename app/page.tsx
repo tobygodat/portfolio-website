@@ -1,3 +1,4 @@
+import { Birds } from "@/components/Birds";
 import { SectionNav } from "@/components/SectionNav";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { about, education, experience, links, projects, site } from "@/content/site";
@@ -44,6 +45,8 @@ function Joined({ items }: { items: string[] }) {
 
 export default function Page() {
   return (
+    <>
+    <Birds />
     <div className="page">
       <aside className="sidebar">
       <div className="sidebar-inner">
@@ -173,5 +176,6 @@ export default function Page() {
       </footer>
       </main>
     </div>
+    </>
   );
 }

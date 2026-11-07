@@ -43,6 +43,7 @@ Linked from resume, GitHub profile, and LinkedIn. Read once, quickly. Updated by
 - Hobbies (philosophy, reading, discussing things with people) are confirmed facts but Toby chose to leave them off the site for now.
 - Structure (Sep 17 2026, revised later that day): one page at `/` with about, experience, projects, and education in that order; `/experience`, `/projects`, and `/education` redirect to their anchors. The earlier Linux home-directory routes, tree nav, and typed shell session were removed. Green is the single accent.
 - Standing preference (Sep 17 2026, later that day): the Linux home-directory structure, tree nav, and shell-session page were dropped as a "dev workflow" costume. Toby took the category standard on the decision page and asked for plain text with the same palette and Literata: one page, name, one line, links as words, prose, and three headed lists; no boxes, chips, icons, or nav; no animation of any kind (typing playback, blinking cursor, and the theme reveal are all out). leerob.com is the craft bar; andrewvu.me binds structure only. /experience and /projects redirect to anchors.
+- Exception to "no motion" (Oct 29 2026, TOB-237): Toby asked for little ASCII birds flying around in the background of the front page. They are the one allowed motion; see the One Flock Rule in DESIGN.md.
 - Bio copy comes from Toby's LinkedIn About section (headline: "CS + Math @ Georgia Tech | Part-Time SWE @ WWT"; based in St. Louis, MO).
 
 ## Evidence on Hand

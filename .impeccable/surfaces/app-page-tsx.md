@@ -13,7 +13,7 @@ Audience and job: recruiters, hiring managers, and engineers arriving from GitHu
 
 Proof and content: all facts from the resume and Toby's LinkedIn About text (PRODUCT.md, Evidence on Hand). Sections in order: name and one line, contact links, bio, experience, projects, education. Hobbies left off. No phone number. No invented links, logos, or metrics. Photo renders only when Toby supplies one.
 
-Constraints: Next.js App Router, static, no backend, no tracking. Content in content/site.ts. Dark and light themes with no flash on load. No animation of any kind (Toby, Sep 17 2026). Pinned palette and Literata kept.
+Constraints: Next.js App Router, static, no backend, no tracking. Content in content/site.ts. Dark and light themes with no flash on load. No animation of any kind (Toby, Sep 17 2026), except the background ASCII birds (Toby, Oct 29 2026). Pinned palette and Literata kept.
 
 ## Direction contract
 
