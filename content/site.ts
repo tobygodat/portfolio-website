@@ -21,7 +21,7 @@ export type LinkKind = "github" | "linkedin" | "x" | "mail";
 export const links: { kind: LinkKind; label: string; href: string }[] = [
   { kind: "github", label: "github", href: "https://github.com/tobygodat/" },
   { kind: "linkedin", label: "linkedin", href: "https://www.linkedin.com/in/tobygodat/" },
-  { kind: "x", label: "x", href: "https://x.com/tobygodat" },
+  { kind: "x", label: "x.com", href: "https://x.com/tobygodat" },
   { kind: "mail", label: "email", href: "mailto:tobygodat@gmail.com" },
 ];
 

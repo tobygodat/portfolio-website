@@ -46,7 +46,7 @@ export function SectionNav() {
             setActive(section);
           }}
         >
-          <span>{section}</span>
+          {section}
         </a>
       ))}
     </nav>
