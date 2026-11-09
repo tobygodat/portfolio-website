@@ -34,7 +34,7 @@ function Joined({ items }: { items: string[] }) {
     <>
       {items.map((item, i) => (
         <span key={item}>
-          {i > 0 && " · "}
+          {i > 0 && " · "}
           {item}
         </span>
       ))}
@@ -149,17 +149,26 @@ export default function Page() {
                   <span className="name">{p.name}</span>
                   <span className="when">{p.context}</span>
                 </p>
+                {p.award && <p className="award">{p.award}</p>}
                 <p className="summary">{p.summary}</p>
-                <p className="meta">
-                  <Joined items={p.stack} />
-                  {p.links.map((l) => (
-                    <span key={l.href}>
-                      {" · "}
-                      <a href={l.href} target="_blank" rel="noreferrer">
-                        {l.label}
-                      </a>
-                    </span>
-                  ))}
+                <p className="meta project-meta">
+                  <span>
+                    <Joined items={p.stack} />
+                  </span>
+                  <span>
+                    {p.links.map((l, i) => (
+                      <span key={l.label}>
+                        {i > 0 && " · "}
+                        {l.href ? (
+                          <a href={l.href} target="_blank" rel="noreferrer">
+                            {l.label}
+                          </a>
+                        ) : (
+                          l.label
+                        )}
+                      </span>
+                    ))}
+                  </span>
                 </p>
               </li>
             ))}

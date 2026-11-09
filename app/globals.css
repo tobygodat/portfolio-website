@@ -257,6 +257,17 @@ p {
 .meta a {
   color: var(--accent);
 }
+.award {
+  color: var(--text);
+  font-size: var(--size-small);
+  font-weight: 500;
+  margin-top: 2px;
+}
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 14px;
+}
 
 .footer {
   margin-top: 88px;

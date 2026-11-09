@@ -75,43 +75,45 @@ export const experience: Role[] = [
 
 export type Project = {
   name: string;
-  /** Where or when it happened. */
+  /** When it happened. */
   context: string;
+  /** Prize or recognition, shown on its own line under the name. */
+  award?: string;
   summary: string;
   stack: string[];
-  links: { label: string; href: string }[];
+  /** A link, or plain text when there is nothing to link to. */
+  links: { label: string; href?: string }[];
 };
 
 /** Only the projects with the strongest signal, matching the current resume. */
 export const projects: Project[] = [
   {
     name: "Fiada",
-    context: "1st place, HackGT\u00A013 · Sep\u00A02026",
+    context: "Sep 2026 – Oct 2026",
+    award: "1st place, ML/AI + visualization track, HackGT 13",
     summary:
-      "A zoomable map of a codebase that sorts and explains itself and lights up where your coding agent is working. It matched 81 of 88 frontend HTTP calls to backend routes in Outline with no wrong matches, and a Canvas renderer cut zoom frame time from about 60 to 17 ms on a 13K-node map.",
+      "A zoomable map of a codebase that lights up the files your AI coding agent touches. It matched 81 of 88 frontend HTTP calls to backend routes in Outline, a knowledge base app, with no wrong matches. Replacing SVG with Canvas cut mean zoom frame time from about 60 to 17\u00A0ms on a 13K-node Next.js map in benchmarks.",
     stack: ["TypeScript", "React", "Fastify", "tree-sitter", "MCP"],
+    // fiada.tech is left off while its indexer is down; add { label: "live app", href: "https://fiada.tech" } first once it is back.
     links: [
-      { label: "site", href: "https://fiada.tech" },
       { label: "github", href: "https://github.com/tobygodat/fiada" },
       { label: "npm", href: "https://www.npmjs.com/package/@fiadatech/agent" },
     ],
   },
   {
     name: "Keystone",
-    context: "Oct\u00A02026",
+    context: "Oct 2026",
     summary:
-      "A native desktop client for Claude Code and Codex that drives the installed CLIs directly. Sessions live in an append-only SQLite event log, crash recovery never resends an interrupted request, and an MCP server lets agents orchestrate each other across providers.",
+      "A native desktop app that runs the Claude Code and Codex coding agents through your installed CLIs. Sessions live in an append-only SQLite event log, and crash recovery never resends an interrupted request. An MCP server lets one agent launch and steer others across providers.",
     stack: ["Rust", "GPUI", "SQLite", "MCP"],
-    // The repo (github.com/tobygodat/keystone) is private; add { label: "github", href } once it is public.
-    links: [],
+    links: [{ label: "private repo" }],
   },
   {
     name: "Stilltype",
-    context: "Sep\u00A02026 – present",
+    context: "Sep 2026 – present",
     summary:
-      "Typing practice for people who already touch type: it finds weak letter pairs, drills them, and retests on text you haven't seen. Rendering only the text near the cursor halved p95 keydown-to-paint latency from 64 to 32 ms.",
-    stack: ["JavaScript", "PostgreSQL", "Supabase", "Cloudflare Workers"],
-    // The repo (github.com/tobygodat/typingsite) is private.
+      "Typing practice for people who already touch type: it finds weak letter pairs, drills them, and retests on text you haven't seen. Rendering only the text near the cursor halved p95 keydown-to-paint latency from 64 to 32\u00A0ms in a Chromium benchmark.",
+    stack: ["JavaScript", "PostgreSQL", "Cloudflare Workers"],
     links: [{ label: "live app", href: "https://stilltype.tobygodat.workers.dev" }],
   },
 ];
