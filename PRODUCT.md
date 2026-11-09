@@ -29,8 +29,9 @@ Linked from resume, GitHub profile, and LinkedIn. Read once, quickly. Updated by
 ## Capabilities and Constraints
 
 - Sections confirmed (revised Sep 17 2026): About/intro (a photo appears only once Toby supplies one), Experience, Projects, and Education from the resume, all on one page. Fun extras were offered and then dropped by Toby ("leave them out for now").
-- Links confirmed: GitHub https://github.com/tobygodat/, LinkedIn https://www.linkedin.com/in/tobygodat/, email tobygodat@gmail.com. The resume PDF and the per-role bullet points were removed from the site at Toby's request (Sep 17 2026); roles show org, title, dates, and location only.
+- Links confirmed: GitHub https://github.com/tobygodat/, LinkedIn https://www.linkedin.com/in/tobygodat/, X https://x.com/tobygodat, email tobygodat@gmail.com. The resume PDF and the per-role bullet points were removed from the site at Toby's request (Sep 17 2026); roles show org, title, dates, and location only.
 - Phone number from the resume must NOT appear on the site.
+- Fiada's fiada.tech link is off the site while its indexer is down. Add it back as Fiada's first link in `content/site.ts` once it is up.
 - Dark mode is welcome (the reference has it) but not required.
 - No CMS, no backend, no analytics required.
 
@@ -39,10 +40,9 @@ Linked from resume, GitHub profile, and LinkedIn. Read once, quickly. Updated by
 - Name shown: Toby Godat.
 - Voice: casual, first person, lowercase-friendly, like andrewvu.me. Not corporate.
 - Reference the user liked at the start: https://andrewvu.me/ (single column, dark mode toggle). Binding as spirit only; its boxed sections and chip buttons were dropped on Sep 17 2026.
-- Visual direction (standing, Sep 17 2026): plain text. Warm near-black or warm paper, Literata, 17px body, links as underlined words in one green, hairline-separated lists with right-aligned dates; no boxes, chips, icons, nav, or motion. leerob.com is the craft bar.
 - Hobbies (philosophy, reading, discussing things with people) are confirmed facts but Toby chose to leave them off the site for now.
-- Structure (Sep 17 2026, revised later that day): one page at `/` with about, experience, projects, and education in that order; `/experience`, `/projects`, and `/education` redirect to their anchors. The earlier Linux home-directory routes, tree nav, and typed shell session were removed. Green is the single accent.
-- Standing preference (Sep 17 2026, later that day): the Linux home-directory structure, tree nav, and shell-session page were dropped as a "dev workflow" costume. Toby took the category standard on the decision page and asked for plain text with the same palette and Literata: one page, name, one line, links as words, prose, and three headed lists; no boxes, chips, icons, or nav; no animation of any kind (typing playback, blinking cursor, and the theme reveal are all out). leerob.com is the craft bar; andrewvu.me binds structure only. /experience and /projects redirect to anchors.
+- Structure (revised Nov 9 2026): one page at `/` with about, education, experience, and projects in that order; `/experience`, `/projects`, and `/education` redirect to their anchors. The earlier Linux home-directory routes, tree nav, and typed shell session were removed.
+- Visual direction (Nov 9 2026): Toby moved on from the plain-text system. The look is now two-panel dark greys with a blue accent; see DESIGN.md.
 - Bio copy comes from Toby's LinkedIn About section (headline: "CS + Math @ Georgia Tech | Part-Time SWE @ WWT"; based in St. Louis, MO).
 
 ## Evidence on Hand
