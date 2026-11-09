@@ -13,14 +13,15 @@ export const site = {
   /** Set to a path in /public (e.g. "/me.jpg") once you add a photo. */
   photo: null as string | null,
   /** Shown in the page footer. */
-  updated: "October 2026",
+  updated: "November 2026",
 };
 
-export type LinkKind = "github" | "linkedin" | "mail";
+export type LinkKind = "github" | "linkedin" | "x" | "mail";
 
 export const links: { kind: LinkKind; label: string; href: string }[] = [
   { kind: "github", label: "github", href: "https://github.com/tobygodat/" },
   { kind: "linkedin", label: "linkedin", href: "https://www.linkedin.com/in/tobygodat/" },
+  { kind: "x", label: "x", href: "https://x.com/tobygodat" },
   { kind: "mail", label: "email", href: "mailto:tobygodat@gmail.com" },
 ];
 
