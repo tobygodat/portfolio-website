@@ -18,7 +18,7 @@ colors:
   accent-light: "#0a5fd1"
 typography:
   family: "Schibsted Grotesk, self-hosted through next/font, with a system sans fallback"
-  title: { fontSize: "26px", fontWeight: 600, lineHeight: 1.3, letterSpacing: "-0.02em" }
+  title: { fontSize: "32px", fontWeight: 600, lineHeight: 1.3, letterSpacing: "-0.02em" }
   name: { fontSize: "18px", fontWeight: 600, lineHeight: 1.35 }
   body: { fontSize: "16px", fontWeight: 400, lineHeight: 1.65 }
   heading: { fontSize: "14px", fontWeight: 500, lineHeight: 1.3 }
@@ -61,7 +61,7 @@ A 1px hairline separates rows within a section, with no rule above a section's f
 
 Both themes use the same roles, swapped on `:root[data-theme="light"]`. A script in the document head applies the saved theme or the system one before paint.
 
-Blue means something can be acted on: links, the current section word and focus. Body links and linked names keep the colour around them with a blue underline, contact links turn blue on hover, and project links are blue at rest. Nothing else is blue, including awards and headings.
+Blue means something can be acted on: links, the current section word and focus. Body links keep the colour around them with a blue underline, linked names and contact links turn blue on hover, and project links are blue at rest. Nothing else is blue, including awards and headings.
 
 Links fade their colour over 120ms, and anchor jumps scroll smoothly unless the visitor asks for reduced motion. The theme swap is instant.
 

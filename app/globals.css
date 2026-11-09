@@ -16,7 +16,7 @@
   --size-body: 16px;
   --size-small: 14px;
   --size-name: 18px;
-  --size-title: 26px;
+  --size-title: 32px;
 
   --space-top: 96px;
   --space-section: 56px;
@@ -154,7 +154,7 @@ p {
   width: 232px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 36px;
 }
 .content {
   max-width: calc(620px + 64px + var(--gutter));
@@ -175,8 +175,8 @@ p {
 
 .tagline {
   color: var(--muted);
-  font-size: var(--size-small);
-  margin-top: 6px;
+  font-size: 15px;
+  margin-top: 8px;
 }
 .phrase {
   display: block;
@@ -233,6 +233,12 @@ p {
   font-weight: 600;
   line-height: 1.35;
   text-wrap: balance;
+}
+.name a {
+  text-decoration-color: transparent;
+}
+.name a:hover {
+  text-decoration-color: var(--accent);
 }
 .when {
   color: var(--muted);
