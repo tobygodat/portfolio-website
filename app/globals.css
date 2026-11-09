@@ -147,14 +147,19 @@ p {
   border-right: 1px solid var(--hairline);
 }
 .sidebar-inner {
-  position: sticky;
-  top: var(--space-top);
   align-self: flex-start;
   flex: none;
   width: 232px;
   display: flex;
   flex-direction: column;
   gap: 36px;
+}
+/* A window shorter than the sidebar would pin its contact links off the bottom edge. */
+@media (min-height: 480px) {
+  .sidebar-inner {
+    position: sticky;
+    top: var(--space-top);
+  }
 }
 .content {
   max-width: calc(620px + 64px + var(--gutter));
@@ -289,6 +294,12 @@ p {
   padding: 0;
   font: inherit;
   cursor: pointer;
+}
+
+@media (max-height: 479px) {
+  :root {
+    --space-top: 40px;
+  }
 }
 
 @media (max-width: 760px) {

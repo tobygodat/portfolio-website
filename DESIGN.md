@@ -29,7 +29,7 @@ spacing:
   sidebar: "232px"
   column: "620px"
   gutter: "24px, 20px at 760px and below"
-  page-top: "96px, 40px at 760px and below"
+  page-top: "96px, 40px at 760px and below or under 480px tall"
   page-bottom: "56px, 40px at 760px and below"
   section: "56px, 48px at 760px and below"
   list-row: "28px above and below the rule"
@@ -41,7 +41,7 @@ This records how the page looks today. It is a reference, not a rulebook. When t
 
 ## Layout
 
-Above 760px the page has two panels. The sidebar holds the name, tagline, section words and contact links, and it stays in view as the page scrolls. The content column holds about, education, experience and projects, in that order.
+Above 760px the page has two panels. The sidebar holds the name, tagline, section words and contact links, and it stays in view as the page scrolls. In a window under 480px tall it scrolls away with the page instead, so a landscape phone can reach the contact links. The content column holds about, education, experience and projects, in that order.
 
 The panel colour runs to the left edge of the screen while the content stays in a centred 956px group, with a 232px sidebar and a 620px column. The group is kept tight on purpose, so wide screens get more margin and not longer lines.
 
