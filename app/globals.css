@@ -150,8 +150,9 @@ p {
   align-self: flex-start;
   flex: none;
   width: 232px;
-  display: flex;
-  flex-direction: column;
+  /* Grid, not a flex column: Chrome sizes the scene's container query against its flex basis, not its final height. */
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
   gap: 36px;
 }
 /* A window shorter than the sidebar would pin its contact links off the bottom edge. */
@@ -159,6 +160,8 @@ p {
   .sidebar-inner {
     position: sticky;
     top: var(--space-top);
+    /* Reaches the bottom padding so the scene can take whatever the words leave over. */
+    min-height: calc(100vh - var(--space-top) - var(--space-bottom));
   }
 }
 .content {
@@ -215,6 +218,55 @@ p {
 .contact a {
   padding-block: 6px;
   text-decoration: none;
+}
+
+/* Decoration, so it never takes a click, and it only appears once there is room for the sky. */
+.scene {
+  min-height: 0;
+  position: relative;
+  container-type: size;
+  pointer-events: none;
+  --scene-faint: color-mix(in srgb, var(--muted) 45%, var(--panel));
+}
+.scene-art {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 14px;
+  white-space: pre;
+  user-select: none;
+}
+@container (height < 160px) {
+  .scene-art {
+    display: none;
+  }
+}
+.scene-art pre {
+  position: absolute;
+  font: inherit;
+}
+.scene-cloud {
+  color: var(--scene-faint);
+  transition: transform 125ms linear;
+}
+.scene-ground {
+  left: 0;
+  bottom: 0;
+  color: var(--scene-faint);
+}
+.scene-cat {
+  bottom: 0;
+  color: var(--muted);
+}
+.scene-bird {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: var(--body);
+  pointer-events: auto;
+  transition: transform 125ms linear;
 }
 
 .list {
@@ -320,10 +372,13 @@ p {
   }
   .sidebar-inner {
     position: static;
+    min-height: 0;
+    grid-template-rows: none;
     width: auto;
     gap: 16px;
   }
-  .section-nav {
+  .section-nav,
+  .scene {
     display: none;
   }
   .content {

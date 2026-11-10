@@ -65,6 +65,14 @@ Blue means something can be acted on: links, the current section word and focus.
 
 Links fade their colour over 120ms, and anchor jumps scroll smoothly unless the visitor asks for reduced motion. The theme swap is instant.
 
+## Sidebar scene
+
+Below the contact links, the sidebar fills the rest of the window with a small ASCII scene in a system monospace face at 12px. It has two clouds, a telephone wire sagging to a pole, a cat sitting under the wire, and a bird. It is decoration, so it is hidden from assistive tech, takes no clicks, and uses no blue. The clouds, wire and pole are a faint mix of muted into the panel colour, the cat is muted, and the bird is body text so the eye can find it.
+
+The bird wanders the open sky below the clouds, changes course every few seconds, and after 9 to 16 seconds glides down to land on the wire or the pole top. It rests for 4 to 9 seconds, then takes off again. Hovering a resting bird startles it into flight. The cat's eyes follow the bird, and it dozes once the bird has settled. One clock ticks 8 times a second and drives the wing frames, the drift of the clouds, and every move, which uses `transform` only.
+
+The scene needs at least 160px of leftover height. With less, as in a short window or a landscape phone where the sidebar scrolls away, it is hidden. It is also hidden at 760px and below, where the sidebar sits above the content and any scene would push the first section down. The clock stops while the tab is hidden or the scene is not shown. With reduced motion the scene is a still picture of the bird resting on the wire, which is also what the server renders.
+
 ## What was dropped
 
 The earlier plain-text system is gone: the book serif, the warm paper colours, the green accent, and its bans on navigation, panels and motion.
