@@ -12,8 +12,6 @@ export const site = {
   /** Browser tab and link previews. */
   description:
     "Toby Godat is a software engineer and math & computing student at Georgia Tech, building developer tools and full-stack products.",
-  /** Set to a path in /public (e.g. "/me.jpg") once you add a photo. */
-  photo: null as string | null,
   /** Shown in the page footer. */
   updated: "November 2026",
 };

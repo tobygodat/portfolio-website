@@ -28,7 +28,7 @@ Linked from resume, GitHub profile, and LinkedIn. Read once, quickly. Updated by
 
 ## Capabilities and Constraints
 
-- Sections confirmed (revised Sep 17 2026): About/intro (a photo appears only once Toby supplies one), Experience, Projects, and Education from the resume, all on one page. Fun extras were offered and then dropped by Toby ("leave them out for now").
+- Sections confirmed (revised Nov 10 2026): a hero with Toby's name, LinkedIn headline and places, then Projects, Work, and School from the resume, all on one page. The page has no photo slot. Fun extras were offered and then dropped by Toby ("leave them out for now").
 - Links confirmed: GitHub https://github.com/tobygodat/, LinkedIn https://www.linkedin.com/in/tobygodat/, X https://x.com/tobygodat, email tobygodat@gmail.com. The resume PDF and the per-role bullet points were removed from the site at Toby's request (Sep 17 2026); roles show org, title, dates, and location only.
 - Phone number from the resume must NOT appear on the site.
 - Fiada's fiada.tech link is off the site while its indexer is down. Add it back as Fiada's first link in `content/site.ts` once it is up.
@@ -41,9 +41,9 @@ Linked from resume, GitHub profile, and LinkedIn. Read once, quickly. Updated by
 - Voice: casual, first person, lowercase-friendly, like andrewvu.me. Not corporate.
 - Reference the user liked at the start: https://andrewvu.me/ (single column, dark mode toggle). Binding as spirit only; its boxed sections and chip buttons were dropped on Sep 17 2026.
 - Hobbies (philosophy, reading, discussing things with people) are confirmed facts but Toby chose to leave them off the site for now.
-- Structure (revised Nov 9 2026): one page at `/` with about, education, experience, and projects in that order; `/experience`, `/projects`, and `/education` redirect to their anchors. The earlier Linux home-directory routes, tree nav, and typed shell session were removed.
-- Visual direction (Nov 9 2026): Toby moved on from the plain-text system. The look is now two-panel dark greys with a blue accent; see DESIGN.md.
-- Bio copy comes from Toby's LinkedIn About section (headline: "CS + Math @ Georgia Tech | Part-Time SWE @ WWT"; based in St. Louis, MO).
+- Structure (revised Nov 10 2026): one page at `/` with the hero, projects, then work and school side by side; `/projects`, `/experience`, and `/education` redirect to `#projects`, `#work`, and `#school`. The earlier Linux home-directory routes, tree nav, and typed shell session were removed.
+- Visual direction (Nov 10 2026): Toby picked a single-column, name-first page from a design canvas, set in Inter, with a light theme and a soft dark theme and a teal accent; it replaced the two-panel sidebar page. See DESIGN.md.
+- The hero line under the name is Toby's LinkedIn headline, verbatim: "CS + Math @ Georgia Tech | Part-Time SWE @ WWT". The quiet line under it is "Atlanta and St. Louis". The earlier About paragraphs are gone.
 
 ## Evidence on Hand
 
@@ -63,7 +63,7 @@ Projects:
 
 Skills: Java, Python, TypeScript/JavaScript, SQL, C, HTML/CSS, SystemVerilog. React, Vue.js, AngularJS, Node.js, Grails, FastAPI. Git, Docker, GitHub Actions, Codefresh, AWS Amplify, Cloud Firestore, Vercel, Render.
 
-Absences (must not be fabricated): no photo supplied yet (the page shows none until `site.photo` is set); orbitOS repo is https://github.com/tobygodat/tobiOS (from local git remote); Baskr and CartWatch repo URLs unconfirmed; hobbies confirmed by Toby: philosophy, reading, discussing things with people (specific books, thinkers, or reading-group details NOT supplied; any named titles in fun-extras are labeled placeholders for Toby to replace); no motto, music, or travel facts supplied; no testimonials, press, or metrics beyond the resume.
+Absences (must not be fabricated): no photo supplied (the page has no photo slot); orbitOS repo is https://github.com/tobygodat/tobiOS (from local git remote); Baskr and CartWatch repo URLs unconfirmed; hobbies confirmed by Toby: philosophy, reading, discussing things with people (specific books, thinkers, or reading-group details NOT supplied; any named titles in fun-extras are labeled placeholders for Toby to replace); no motto, music, or travel facts supplied; no testimonials, press, or metrics beyond the resume.
 
 ## Product Principles
 

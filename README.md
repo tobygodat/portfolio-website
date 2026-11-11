@@ -6,7 +6,7 @@ A one-page personal site built with Next.js (App Router, static output, no backe
 
 Everything visible lives in [`content/site.ts`](content/site.ts): name, headline, place, links, experience, projects, education. Components hard-code only the section names and the footer's wording.
 
-- **Photo:** drop an image in `public/` and set `site.photo` to its path (e.g. `"/me.jpg"`).
+- **Projects:** each needs an `id`, and `components/thumbnails.tsx` needs a drawing for that id or the build fails.
 - **Project links:** add `{ label, href }` entries to a project's `links` array once the repos are public.
 
 ## Run
