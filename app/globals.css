@@ -494,6 +494,13 @@ span.chip-link {
   }
 }
 
+/* A landscape phone has width to spare but not height; the square would push the projects a screen down. */
+@media (max-height: 559px) {
+  .scene {
+    display: none;
+  }
+}
+
 @media print {
   .theme,
   .actions {

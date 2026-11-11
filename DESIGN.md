@@ -100,7 +100,7 @@ The clock stops while the tab is hidden or the scene is off screen. With reduced
 
 ## Phones
 
-Below 640px the scene is hidden so the projects come sooner, the side gutter is 16px, and the gap between blocks drops to 72px. The name scales down to 56px and the headline to 22px. A project card wraps once it is too narrow for the drawing beside the text, and the drawing then spans the top of the card. Work and School stack. At 390px wide nothing scrolls sideways.
+Below 640px the scene is hidden so the projects come sooner, the side gutter is 16px, and the gap between blocks drops to 72px. The name scales down to 56px and the headline to 22px. A project card wraps once it is too narrow for the drawing beside the text, and the drawing then spans the top of the card. Work and School stack. At 390px wide nothing scrolls sideways. The scene is also hidden in any window under 560px tall, such as a landscape phone, where the square would push the projects a full screen down.
 
 ## What was dropped
 
