@@ -4,11 +4,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { thumbnails } from "@/components/thumbnails";
 import { education, experience, links, projects, site, type Project } from "@/content/site";
 
-const sections = [
-  { id: "projects", label: "projects" },
-  { id: "work", label: "work" },
-  { id: "school", label: "school" },
-];
+const sections = ["projects", "work", "school"];
 
 const email = links.find((l) => l.kind === "mail")!;
 
@@ -84,9 +80,9 @@ export default function Page() {
     <div className="page">
       <header className="top">
         <nav aria-label="Sections" className="top-nav">
-          {sections.map((s) => (
-            <a key={s.id} href={`#${s.id}`}>
-              {s.label}
+          {sections.map((id) => (
+            <a key={id} href={`#${id}`}>
+              {id}
             </a>
           ))}
         </nav>
