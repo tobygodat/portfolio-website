@@ -231,8 +231,9 @@ h2 {
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
+/* Beside the text the body takes nearly all spare room; once the card wraps, the drawing spans it. */
 .thumb {
-  flex: 0 0 340px;
+  flex: 1 0 340px;
   max-width: 100%;
   min-height: 240px;
   padding: 24px;
@@ -291,7 +292,7 @@ h2 {
 }
 
 .card-body {
-  flex: 1 1 420px;
+  flex: 999 1 420px;
   min-width: 0;
   padding: 28px 32px;
   display: flex;
