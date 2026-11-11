@@ -1,4 +1,5 @@
 import { SectionNav } from "@/components/SectionNav";
+import { SkyScene } from "@/components/SkyScene";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { about, education, experience, links, projects, site } from "@/content/site";
 
@@ -69,6 +70,7 @@ export default function Page() {
             </a>
           ))}
         </p>
+        <SkyScene />
       </div>
       </aside>
 
