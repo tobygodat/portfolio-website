@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const sections = ["about", "education", "experience", "projects"] as const;
+const sections = ["education", "experience", "projects"] as const;
 
 const SETTLE_MS = 150;
 

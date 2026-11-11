@@ -1,25 +1,7 @@
 import { SectionNav } from "@/components/SectionNav";
 import { SkyScene } from "@/components/SkyScene";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { about, education, experience, links, projects, site } from "@/content/site";
-
-type Part = string | { text: string; href: string };
-
-function Rich({ parts }: { parts: Part[] }) {
-  return (
-    <>
-      {parts.map((part, i) =>
-        typeof part === "string" ? (
-          part
-        ) : (
-          <a key={i} href={part.href} target="_blank" rel="noreferrer">
-            {part.text}
-          </a>
-        ),
-      )}
-    </>
-  );
-}
+import { education, experience, links, projects, site } from "@/content/site";
 
 function Name({ name, href }: { name: string; href?: string }) {
   if (!href) return <>{name}</>;
@@ -54,13 +36,7 @@ export default function Page() {
           <img className="photo" src={site.photo} alt={`Photo of ${site.name}`} width={96} height={96} />
         )}
         <h1>{site.name}</h1>
-        <p className="tagline">
-          {site.tagline.split(" · ").map((phrase) => (
-            <span key={phrase} className="phrase">
-              {phrase}
-            </span>
-          ))}
-        </p>
+        <p className="tagline">{site.headline}</p>
       </header>
         <SectionNav />
         <p className="contact">
@@ -75,15 +51,6 @@ export default function Page() {
       </aside>
 
       <main className="content">
-
-        <section id="about" className="bio" aria-labelledby="about-title">
-          <h2 id="about-title">about</h2>
-          {about.map((parts, i) => (
-            <p key={i}>
-              <Rich parts={parts} />
-            </p>
-          ))}
-        </section>
 
         <section id="education" aria-labelledby="education-title">
           <h2 id="education-title">education</h2>
