@@ -84,11 +84,13 @@ function steer(pos: Vec, vel: Vec, goal: Vec, max: number, grip: number): Vec {
   };
 }
 
+/** The nearest point the bird can occupy, leaving room for its widest glyph. */
+function reachable(p: Vec, box: Box): Vec {
+  return { x: clamp(p.x, 0, box.w - WIDEST * box.ch), y: clamp(p.y, LINE, box.h - LINE) };
+}
+
 function move(pos: Vec, vel: Vec, box: Box, dt: number): Vec {
-  return {
-    x: clamp(pos.x + vel.x * dt, 0, box.w - WIDEST * box.ch),
-    y: clamp(pos.y + vel.y * dt, LINE, box.h - LINE),
-  };
+  return reachable({ x: pos.x + vel.x * dt, y: pos.y + vel.y * dt }, box);
 }
 
 function step(bird: Bird, box: Box, ms: number): Bird {
@@ -119,7 +121,9 @@ function step(bird: Bird, box: Box, ms: number): Bird {
       return { ...bird, t, goal, retarget, vel, pos: move(bird.pos, vel, box, dt) };
     }
     case "landing": {
-      const target = cellPos(bird.perch, box);
+      // A perch near the right edge can sit past where the bird may fly when glyphs are wide, so aim for the
+      // reachable point or the landing never finishes.
+      const target = reachable(cellPos(bird.perch, box), box);
       if (Math.hypot(target.x - bird.pos.x, target.y - bird.pos.y) < 2) {
         const facing: Facing = bird.vel.x < 0 ? -1 : 1;
         return { phase: "perched", t: 0, perch: bird.perch, facing, rest: rand(4000, 9000) };
