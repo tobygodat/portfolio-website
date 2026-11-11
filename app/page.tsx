@@ -43,7 +43,9 @@ function ProjectCard({ project }: { project: Project }) {
               {s}
             </span>
           ))}
-          {project.links.map((l) =>
+          {project.links
+            .filter((l) => l.href !== home || !l.href)
+            .map((l) =>
             l.href ? (
               <External key={l.label} href={l.href} className="chip-link">
                 {l.label} ↗
