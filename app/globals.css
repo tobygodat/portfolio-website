@@ -467,6 +467,14 @@ span.chip-link {
   transition: transform 125ms linear;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .scene-cloud,
+  .scene-far,
+  .scene-bird {
+    transition: none;
+  }
+}
+
 @media (max-width: 639px) {
   :root {
     --gap: 72px;

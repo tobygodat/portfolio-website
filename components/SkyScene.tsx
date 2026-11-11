@@ -15,11 +15,11 @@ type Bird =
 
 type Phase = Bird["phase"];
 
-/** Scene size in px, plus the character cell the art is drawn on. */
+/** Scene size in px, plus the measured width of one character. */
 type Box = { w: number; h: number; ch: number };
 
 const TICK_MS = 125;
-const LINE = 14;
+const LINE = 16;
 const SPEED = 40;
 const TAKEOFF_MS = 500;
 
@@ -29,6 +29,7 @@ const FRAMES: Record<Phase, readonly string[]> = {
   flying: ["\\v/", "-v-", "/v\\", "-v-"],
   landing: ["-v-", "~v~"],
 };
+const WIDEST = Math.max(...Object.values(FRAMES).flat().map((glyph) => glyph.length));
 
 const MIRROR: Record<string, string> = { "<": ">", ">": "<", "(": ")", ")": "(", "/": "\\", "\\": "/" };
 const mirror = (glyph: string) =>
@@ -39,33 +40,36 @@ const mirror = (glyph: string) =>
 
 // Rows run top to bottom; the cat sits in the blank cells at the bottom left.
 const GROUND = [
-  "                           _|_",
-  "'-._                    _.-'| ",
-  "    '-.______________.-'    | ",
-  "                            | ",
-  "                            | ",
-  "                            | ",
+  "                                               _|_",
+  "'-._                                     __..--'| ",
+  "    '-.________________________...---''''       | ",
+  "                                                | ",
+  "                                                | ",
+  "                                                | ",
 ];
+const COLS = Math.max(...GROUND.map((line) => line.length));
 const PERCHES: readonly Cell[] = [
-  { col: 9, row: 3 },
-  { col: 15, row: 3 },
-  { col: 27, row: 6 },
+  { col: 10, row: 3 },
+  { col: 20, row: 3 },
+  { col: 47, row: 6 },
 ];
 const CAT = { col: 1, ears: " /\\_/\\", body: " > ^ <" };
-const CLOUDS = [
-  { art: "   .--.\n.-(    ).\n(___.__)_)", top: 4, left: 20, drift: 18, period: 47_000 },
-  { art: "  .-.\n (   ).\n(___(__)", top: 44, left: 128, drift: 14, period: 61_000 },
+const DRIFTERS = [
+  { art: "    .--.\n .-(    ).\n(___.__)__)", kind: "cloud", top: 0, col: 2, drift: 18, period: 47_000 },
+  { art: "  .-.\n (   ).\n(___(__)", kind: "cloud", top: 12, col: 38, drift: 14, period: 61_000 },
+  { art: "v", kind: "far", top: 150, col: 8, drift: 24, period: 83_000 },
 ] as const;
 
 const START: Extract<Bird, { phase: "perched" }> = { phase: "perched", t: 0, perch: PERCHES[0], facing: -1, rest: 5000 };
 
 const rand = (min: number, max: number) => min + Math.random() * (max - min);
+const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
 const cellPos = (c: Cell, box: Box): Vec => ({ x: c.col * box.ch, y: c.row * LINE });
 
-/** A random point in the open sky, kept below the clouds when the scene is tall enough to allow it. */
+/** A random point in the open sky between the wire and the clouds. */
 function skyGoal(box: Box): Vec {
   const low = GROUND.length * LINE;
-  return { x: rand(0, box.w - 4 * box.ch), y: rand(low, Math.max(low + 20, box.h - 100)) };
+  return { x: rand(0, box.w - WIDEST * box.ch), y: rand(low, Math.max(low + 20, box.h - 100)) };
 }
 
 /** Steers `vel` toward `goal` without exceeding `max` px/s, which bends paths into arcs. */
@@ -82,8 +86,8 @@ function steer(pos: Vec, vel: Vec, goal: Vec, max: number, grip: number): Vec {
 
 function move(pos: Vec, vel: Vec, box: Box, dt: number): Vec {
   return {
-    x: Math.min(Math.max(pos.x + vel.x * dt, 0), box.w - 4 * box.ch),
-    y: Math.min(Math.max(pos.y + vel.y * dt, LINE), box.h - LINE),
+    x: clamp(pos.x + vel.x * dt, 0, box.w - WIDEST * box.ch),
+    y: clamp(pos.y + vel.y * dt, LINE, box.h - LINE),
   };
 }
 
@@ -130,16 +134,18 @@ function startle(bird: Bird): Bird {
   return bird.phase === "perched" ? { ...bird, rest: 0 } : bird;
 }
 
-/** Where the bird is drawn and which glyph it shows on clock tick `n`. */
+/** Where the bird is drawn and which glyph it shows on clock tick `n`, kept whole inside the box. */
 function pose(bird: Bird, box: Box, n: number): { at: Vec; glyph: string } {
   const frames = FRAMES[bird.phase];
   const frame = frames[n % frames.length];
-  if (bird.phase === "perched") {
-    return { at: cellPos(bird.perch, box), glyph: bird.facing === 1 ? frame : mirror(frame) };
-  }
+  const glyph = bird.phase === "perched" && bird.facing === -1 ? mirror(frame) : frame;
+  const base = bird.phase === "perched" ? cellPos(bird.perch, box) : bird.pos;
   // A flap lifts the bird a pixel or two, so level flight still bobs.
   const bob = bird.phase === "flying" ? Math.sin(n * (Math.PI / 2)) * 1.5 : 0;
-  return { at: { x: bird.pos.x, y: bird.pos.y + bob }, glyph: frame };
+  return {
+    at: { x: clamp(base.x, 0, box.w - glyph.length * box.ch), y: clamp(base.y + bob, 0, box.h - LINE) },
+    glyph,
+  };
 }
 
 /** The cat watches the bird, and dozes off once it has settled. */
@@ -153,16 +159,17 @@ function catFace(bird: Bird, box: Box): string {
 
 const translate = (at: Vec) => `translate(${at.x.toFixed(1)}px, ${(-at.y).toFixed(1)}px)`;
 
-/** Decoration under the sidebar's contact links: clouds, a wire, a cat, and a bird that wanders and perches. */
+/** The hero's framed square: clouds, a wire, a cat, and a bird that wanders and perches. */
 export function SkyScene() {
   const artRef = useRef<HTMLDivElement>(null);
   const groundRef = useRef<HTMLPreElement>(null);
   const birdRef = useRef<HTMLSpanElement>(null);
   const faceRef = useRef<HTMLSpanElement>(null);
-  const cloudRefs = useRef<(HTMLPreElement | null)[]>([]);
+  const drifterRefs = useRef<(HTMLPreElement | null)[]>([]);
 
   useEffect(() => {
     const art = artRef.current!;
+    const ground = groundRef.current!;
     const birdEl = birdRef.current!;
     const faceEl = faceRef.current!;
     const reduce = matchMedia("(prefers-reduced-motion: reduce)");
@@ -173,27 +180,38 @@ export function SkyScene() {
     let timer: ReturnType<typeof setInterval> | undefined;
     const box: Box = { w: 0, h: 0, ch: 0 };
 
+    // The ground is plain monospace text, so its rendered width over its column count is the real glyph width,
+    // whichever font actually loaded.
     function measure() {
       box.w = art.clientWidth;
       box.h = art.clientHeight;
-      box.ch = groundRef.current!.getBoundingClientRect().width / GROUND[0].length;
+      box.ch = ground.getBoundingClientRect().width / COLS;
     }
 
-    function tick() {
-      n += 1;
-      bird = step(bird, box, TICK_MS);
+    function render() {
       const { at, glyph } = pose(bird, box, n);
       birdEl.style.transform = translate(at);
       if (birdEl.textContent !== glyph) birdEl.textContent = glyph;
       const face = catFace(bird, box);
       if (faceEl.textContent !== face) faceEl.textContent = face;
-      CLOUDS.forEach((cloud, i) => {
-        const x = Math.sin(((n * TICK_MS) / cloud.period) * 2 * Math.PI) * cloud.drift;
-        cloudRefs.current[i]!.style.transform = `translateX(${x.toFixed(1)}px)`;
+      DRIFTERS.forEach((d, i) => {
+        const x = Math.sin(((n * TICK_MS) / d.period) * 2 * Math.PI) * d.drift;
+        drifterRefs.current[i]!.style.transform = `translateX(${x.toFixed(1)}px)`;
       });
     }
 
+    function tick() {
+      n += 1;
+      bird = step(bird, box, TICK_MS);
+      render();
+    }
+
     function sync() {
+      if (reduce.matches && bird.phase !== "perched") {
+        bird = START;
+        measure();
+        render();
+      }
       const run = onScreen && document.visibilityState === "visible" && !reduce.matches;
       if (run && timer === undefined) {
         measure();
@@ -209,8 +227,10 @@ export function SkyScene() {
       sync();
     });
     io.observe(art);
+    // Watching the ground too catches the web font swapping in, which changes the glyph width but not the frame.
     const ro = new ResizeObserver(measure);
     ro.observe(art);
+    ro.observe(ground);
     const onEnter = () => {
       bird = startle(bird);
     };
@@ -231,16 +251,16 @@ export function SkyScene() {
   return (
     <div className="scene" aria-hidden="true">
       <div className="scene-art" ref={artRef}>
-        {CLOUDS.map((cloud, i) => (
+        {DRIFTERS.map((d, i) => (
           <pre
             key={i}
-            className="scene-cloud"
-            style={{ top: cloud.top, left: cloud.left }}
+            className={`scene-${d.kind}`}
+            style={{ top: d.top, left: `${d.col}ch` }}
             ref={(el) => {
-              cloudRefs.current[i] = el;
+              drifterRefs.current[i] = el;
             }}
           >
-            {cloud.art}
+            {d.art}
           </pre>
         ))}
         <pre className="scene-ground" ref={groundRef}>
@@ -258,7 +278,7 @@ export function SkyScene() {
           ref={birdRef}
           style={{ transform: `translate(${START.perch.col}ch, ${-START.perch.row * LINE}px)` }}
         >
-          {START.facing === 1 ? FRAMES.perched[0] : mirror(FRAMES.perched[0])}
+          {mirror(FRAMES.perched[0])}
         </span>
       </div>
     </div>
