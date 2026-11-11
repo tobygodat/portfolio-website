@@ -163,7 +163,7 @@ function catFace(bird: Bird, box: Box): string {
 
 const translate = (at: Vec) => `translate(${at.x.toFixed(1)}px, ${(-at.y).toFixed(1)}px)`;
 
-/** The hero's framed square: clouds, a wire, a cat, and a bird that wanders and perches. */
+/** The framed band under the hero: clouds, a wire, a cat, and a bird that wanders and perches. */
 export function SkyScene() {
   const artRef = useRef<HTMLDivElement>(null);
   const groundRef = useRef<HTMLPreElement>(null);

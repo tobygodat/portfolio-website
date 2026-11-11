@@ -42,8 +42,8 @@
 :root {
   --sans: var(--font-sans), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: var(--font-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --radius: 16px;
-  --gap: 112px;
+  --radius: 14px;
+  --gap: 88px;
 }
 
 *,
@@ -109,9 +109,9 @@ h3 {
 }
 
 .page {
-  max-width: 1280px;
+  max-width: 640px;
   margin: 0 auto;
-  padding: 40px 0 64px;
+  padding: 32px 0 56px;
   display: flex;
   flex-direction: column;
   gap: var(--gap);
@@ -127,13 +127,13 @@ h3 {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 0 32px;
-  font-size: 15px;
+  gap: 0 24px;
+  font-size: 14px;
 }
 .top-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 24px;
+  gap: 0 18px;
 }
 .top-nav a {
   color: var(--nav);
@@ -146,31 +146,27 @@ h3 {
 
 .hero {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 56px 80px;
+  flex-direction: column;
+  gap: 40px;
 }
 .hero-text {
-  flex: 1 1 520px;
-  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 h1 {
   color: var(--ink);
-  font-size: clamp(56px, 14vw, 96px);
+  font-size: clamp(40px, 11vw, 52px);
   font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.055em;
+  line-height: 1;
+  letter-spacing: -0.045em;
 }
 .headline {
-  max-width: 620px;
   color: var(--ink);
-  font-size: clamp(22px, 5vw, 26px);
+  font-size: 19px;
   font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: -0.025em;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
 }
 .place {
   color: var(--muted);
@@ -178,18 +174,18 @@ h1 {
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
   margin-top: 8px;
 }
 .button {
   border-radius: 999px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.6;
   text-decoration: none;
 }
 .button-fill {
-  padding: 14px 24px;
+  padding: 12px 20px;
   color: var(--on-ink);
   background: var(--ink);
 }
@@ -198,7 +194,7 @@ h1 {
   background: var(--accent);
 }
 .button-line {
-  padding: 13px 23px;
+  padding: 11px 19px;
   color: var(--ink);
   border: 1px solid var(--outline);
 }
@@ -214,13 +210,13 @@ h2 {
 .projects {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 .projects h2 {
-  margin-bottom: 12px;
-  font-size: clamp(32px, 8vw, 44px);
-  line-height: 1.1;
-  letter-spacing: -0.04em;
+  margin-bottom: 4px;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
 }
 
 .card {
@@ -231,11 +227,10 @@ h2 {
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
-/* Beside the text the body takes nearly all spare room; once the card wraps, the drawing spans it. */
+/* The column is too narrow for the drawing beside the text, so it spans the top of the card. */
 .thumb {
-  flex: 1 0 340px;
-  max-width: 100%;
-  min-height: 240px;
+  flex: 1 1 100%;
+  min-height: 200px;
   padding: 24px;
   display: flex;
   align-items: center;
@@ -292,20 +287,20 @@ h2 {
 }
 
 .card-body {
-  flex: 999 1 420px;
+  flex: 1 1 100%;
   min-width: 0;
-  padding: 28px 32px;
+  padding: 22px 24px 24px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 .kicker {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--muted);
 }
 .card-title {
   color: var(--ink);
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.03em;
@@ -314,6 +309,7 @@ h2 {
   text-decoration: none;
 }
 .summary {
+  font-size: 15px;
   line-height: 1.7;
   letter-spacing: -0.011em;
 }
@@ -339,20 +335,18 @@ span.chip-link {
 
 .history {
   display: flex;
-  flex-wrap: wrap;
-  gap: 48px 80px;
-  padding-top: 48px;
+  flex-direction: column;
+  gap: 48px;
+  padding-top: 40px;
   border-top: 1px solid var(--border);
 }
 .history-col {
-  flex: 1 1 360px;
-  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 .history h2 {
-  font-size: 28px;
+  font-size: 22px;
   line-height: 1.3;
 }
 .entry {
@@ -362,7 +356,7 @@ span.chip-link {
 }
 .entry-title {
   color: var(--ink);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.6;
   letter-spacing: -0.015em;
@@ -375,7 +369,7 @@ span.chip-link {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 0 16px;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.7;
 }
 .when,
@@ -384,7 +378,7 @@ span.chip-link {
 }
 .entry-note {
   margin-top: 6px;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -394,7 +388,7 @@ span.chip-link {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--muted);
 }
 .theme {
@@ -403,7 +397,7 @@ span.chip-link {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 10px 18px;
+  padding: 8px 16px;
   cursor: pointer;
   transition:
     color 120ms,
@@ -414,11 +408,9 @@ span.chip-link {
   border-color: var(--accent);
 }
 
-/* Decoration, so it takes no clicks except on the bird. */
+/* Decoration, so it takes no clicks except on the bird. A band under the hero text, as wide as the column. */
 .scene {
-  flex: 0 1 460px;
-  min-width: 0;
-  aspect-ratio: 1 / 1;
+  height: 320px;
   position: relative;
   overflow: hidden;
   background: var(--card);
@@ -430,9 +422,13 @@ span.chip-link {
   line-height: 16px;
   user-select: none;
 }
+/* The drawing is 50 characters wide; centring a box of exactly that width keeps the wire, pole and sky together. */
 .scene-art {
   position: absolute;
-  inset: 28px 24px;
+  inset: 24px 0;
+  width: 50ch;
+  max-width: calc(100% - 32px);
+  margin-inline: auto;
   overflow: hidden;
   white-space: pre;
 }
@@ -478,7 +474,7 @@ span.chip-link {
 
 @media (max-width: 639px) {
   :root {
-    --gap: 72px;
+    --gap: 64px;
   }
   body {
     padding: 0 16px;
@@ -490,7 +486,7 @@ span.chip-link {
     display: none;
   }
   .card-body {
-    padding: 24px;
+    padding: 20px;
   }
 }
 
