@@ -1,40 +1,49 @@
-:root {
-  --ground: #141414;
-  --panel: #1f1f1f;
-  --hairline: #252526;
-  --text: #ececec;
-  --body: #c9c9cb;
-  --muted: #9b9b9f;
-  --accent: #6ab0ff;
-  --selection: color-mix(in srgb, var(--accent) 30%, var(--ground));
-  --underline: color-mix(in srgb, var(--accent) 45%, transparent);
-  --scrollbar: color-mix(in srgb, var(--muted) 45%, transparent);
+:root,
+:root[data-theme="light"] {
+  --ground: #fafaf9;
+  --card: #ffffff;
+  --well: #f4f4f5;
+  --chip: #f1f1f2;
+  --border: #e4e4e7;
+  --outline: #d4d4d8;
+  --ink: #111113;
+  --body: #3f3f46;
+  --nav: #52525b;
+  --muted: #6b6b73;
+  --quiet: #71717a;
+  --dim: #a1a1aa;
+  --faint: #c4c4c8;
+  --underline: #c4c4c8;
+  --accent: #0f766e;
+  --on-ink: #ffffff;
+  color-scheme: light;
+}
 
-  --font: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-
-  --size-body: 16px;
-  --size-small: 14px;
-  --size-name: 18px;
-  --size-title: 32px;
-
-  --space-top: 96px;
-  --space-section: 56px;
-  --space-bottom: 56px;
-  --gutter: 24px;
-
+:root[data-theme="dark"] {
+  --ground: #1c1c1f;
+  --card: #242428;
+  --well: #202024;
+  --chip: #2c2c31;
+  --border: #303035;
+  --outline: #3a3a40;
+  --ink: #ececea;
+  --body: #b9b9b4;
+  --nav: #b9b9b4;
+  --muted: #8f8f8a;
+  --quiet: #8f8f8a;
+  --dim: #6a6a6f;
+  --faint: #4a4a50;
+  --underline: #5a5a60;
+  --accent: #6cc7ad;
+  --on-ink: #1c1c1f;
   color-scheme: dark;
 }
 
-:root[data-theme="light"] {
-  --ground: #ffffff;
-  --panel: #f4f4f5;
-  --hairline: #d4d4d8;
-  --text: #18181b;
-  --body: #3f3f46;
-  --muted: #6b6b73;
-  --accent: #0a5fd1;
-  color-scheme: light;
+:root {
+  --sans: var(--font-sans), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: var(--font-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --radius: 14px;
+  --gap: 88px;
 }
 
 *,
@@ -45,11 +54,8 @@
 }
 
 html {
-  font-size: var(--size-body);
   -webkit-text-size-adjust: 100%;
-  scrollbar-color: var(--scrollbar) transparent;
-  scrollbar-width: thin;
-  scroll-padding-top: var(--space-top);
+  scroll-padding-top: 24px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -61,349 +67,439 @@ html {
 body {
   background: var(--ground);
   color: var(--body);
-  font-family: var(--font);
-  line-height: 1.65;
-  font-feature-settings: "kern", "liga";
+  font-family: var(--sans);
+  font-feature-settings: "cv11", "ss01";
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 0 24px;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  caret-color: var(--accent);
 }
 
 ::selection {
-  background: var(--selection);
-  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
+  color: var(--ink);
 }
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar);
-  border-radius: 999px;
-}
+
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
-a,
-.theme {
-  color: inherit;
-  text-decoration: underline;
+a {
+  color: var(--ink);
   text-decoration-color: var(--underline);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
+  text-underline-offset: 4px;
   transition:
     color 120ms,
-    text-decoration-color 120ms;
+    text-decoration-color 120ms,
+    background-color 120ms,
+    border-color 120ms;
 }
-a:hover,
-.theme:hover {
+a:hover {
   color: var(--accent);
   text-decoration-color: var(--accent);
 }
 
+p,
 h1,
-h2 {
-  line-height: 1.3;
-  text-wrap: balance;
-}
-h1 {
-  color: var(--text);
-  font-size: var(--size-title);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-h2 {
-  color: var(--muted);
-  font-size: var(--size-small);
-  font-weight: 500;
-  margin-bottom: 18px;
-}
-
-p {
+h2,
+h3 {
   text-wrap: pretty;
 }
-.bio p + p {
-  margin-top: 16px;
-}
 
-/* The panel colour runs to the viewport edge while its content stays pinned to the
-   centred 956px group; the max() keeps the sidebar whole once the group stops fitting. */
 .page {
-  display: grid;
-  grid-template-columns: max(297px, calc((100% - 956px) / 2 + 272px)) minmax(0, 1fr);
-  min-height: 100vh;
-}
-.sidebar {
-  display: flex;
-  justify-content: flex-end;
-  padding: var(--space-top) 40px var(--space-bottom) var(--gutter);
-  background: var(--panel);
-  border-right: 1px solid var(--hairline);
-}
-.sidebar-inner {
-  align-self: flex-start;
-  flex: none;
-  width: 232px;
-  /* Grid, not a flex column: Chrome sizes the scene's container query against its flex basis, not its final height. */
-  display: grid;
-  grid-template-rows: auto auto auto 1fr;
-  gap: 36px;
-}
-/* A window shorter than the sidebar would pin its contact links off the bottom edge. */
-@media (min-height: 480px) {
-  .sidebar-inner {
-    position: sticky;
-    top: var(--space-top);
-    /* Reaches the bottom padding so the scene can take whatever the words leave over. */
-    min-height: calc(100vh - var(--space-top) - var(--space-bottom));
-  }
-}
-.content {
-  max-width: calc(620px + 64px + var(--gutter));
-  padding: var(--space-top) var(--gutter) var(--space-bottom) 64px;
-}
-.content > section + section {
-  margin-top: var(--space-section);
-}
-
-.photo {
-  width: 96px;
-  height: 96px;
-  border-radius: 6px;
-  object-fit: cover;
-  display: block;
-  margin-bottom: 16px;
-}
-
-.tagline {
-  color: var(--muted);
-  font-size: 15px;
-  margin-top: 8px;
-}
-.phrase {
-  display: block;
-}
-
-.section-nav {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 0 56px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
+  gap: var(--gap);
 }
-.section-nav a {
-  color: var(--muted);
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0 24px;
+  font-size: 14px;
+}
+.top-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 18px;
+}
+.top-nav a {
+  color: var(--nav);
   text-decoration: none;
+  padding: 12px 0;
 }
-.section-nav a:hover {
-  color: var(--text);
-}
-.section-nav a[aria-current="true"] {
+.top-nav a:hover {
   color: var(--accent);
 }
 
-.contact {
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+h1 {
+  color: var(--ink);
+  font-size: clamp(40px, 11vw, 52px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+.headline {
+  color: var(--ink);
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+.place {
+  color: var(--muted);
+}
+.actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 14px;
-  margin-block: -6px;
-  color: var(--muted);
-  font-size: var(--size-small);
+  gap: 10px;
+  margin-top: 8px;
 }
-.contact a {
-  padding-block: 6px;
+.button {
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
   text-decoration: none;
 }
-
-/* Decoration, so it never takes a click, and it only appears once there is room for the sky. */
-.scene {
-  min-height: 0;
-  position: relative;
-  container-type: size;
-  pointer-events: none;
-  --scene-faint: color-mix(in srgb, var(--muted) 45%, var(--panel));
+.button-fill {
+  padding: 12px 20px;
+  color: var(--on-ink);
+  background: var(--ink);
 }
-.scene-art {
-  position: absolute;
-  inset: 0;
+.button-fill:hover {
+  color: var(--on-ink);
+  background: var(--accent);
+}
+.button-line {
+  padding: 11px 19px;
+  color: var(--ink);
+  border: 1px solid var(--outline);
+}
+.button-line:hover {
+  border-color: var(--accent);
+}
+
+h2 {
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.projects h2 {
+  margin-bottom: 4px;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
   overflow: hidden;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 12px;
-  line-height: 14px;
-  white-space: pre;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+/* The column is too narrow for the drawing beside the text, so it spans the top of the card. */
+.thumb {
+  flex: 1 1 100%;
+  min-height: 200px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--well);
+  font-family: var(--mono);
   user-select: none;
 }
-@container (height < 160px) {
-  .scene-art {
-    display: none;
-  }
+.thumb .hl {
+  color: var(--accent);
+}
+.thumb .ink {
+  color: var(--ink);
+}
+.thumb-art {
+  font: inherit;
+  line-height: 20px;
+}
+.thumb-fiada {
+  font-size: 14px;
+  color: var(--faint);
+}
+.thumb-keystone {
+  font-size: 13px;
+  color: var(--quiet);
+}
+.thumb-stilltype {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.thumb-note {
+  font-size: 12px;
+  color: var(--muted);
+}
+.thumb-typing {
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--dim);
+}
+.thumb-typing .pair {
+  border-bottom: 2px solid var(--accent);
+}
+.thumb-typing .pair-next {
+  border-bottom-color: var(--outline);
+}
+.thumb-typing .caret {
+  display: inline-block;
+  width: 2px;
+  height: 26px;
+  vertical-align: -5px;
+  background: var(--accent);
+}
+
+.card-body {
+  flex: 1 1 100%;
+  min-width: 0;
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.kicker {
+  font-size: 13px;
+  color: var(--muted);
+}
+.card-title {
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+.title-link {
+  text-decoration: none;
+}
+.summary {
+  font-size: 15px;
+  line-height: 1.7;
+  letter-spacing: -0.011em;
+}
+.chips {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+.chip {
+  padding: 4px 10px;
+  background: var(--chip);
+  border-radius: 999px;
+}
+.chip-link {
+  padding: 4px 0 4px 6px;
+}
+span.chip-link {
+  color: var(--muted);
+}
+
+.history {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+.history-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.history h2 {
+  font-size: 22px;
+  line-height: 1.3;
+}
+.entry {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.entry-title {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: -0.015em;
+}
+.entry-title a {
+  text-decoration: none;
+}
+.entry-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 16px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.when,
+.entry-note {
+  color: var(--muted);
+}
+.entry-note {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.theme {
+  font: inherit;
+  color: var(--body);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition:
+    color 120ms,
+    border-color 120ms;
+}
+.theme:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Decoration, so it takes no clicks except on the bird. A band under the hero text, as wide as the column. */
+.scene {
+  height: 320px;
+  position: relative;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  pointer-events: none;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 16px;
+  user-select: none;
+}
+/* The drawing is 50 characters wide; centring a box of exactly that width keeps the wire, pole and sky together. */
+.scene-art {
+  position: absolute;
+  inset: 24px 0;
+  width: 50ch;
+  max-width: calc(100% - 32px);
+  margin-inline: auto;
+  overflow: hidden;
+  white-space: pre;
 }
 .scene-art pre {
   position: absolute;
   font: inherit;
 }
-.scene-cloud {
-  color: var(--scene-faint);
+.scene-cloud,
+.scene-ground {
+  color: var(--faint);
+}
+.scene-far {
+  color: var(--dim);
+}
+.scene-cloud,
+.scene-far {
   transition: transform 125ms linear;
 }
 .scene-ground {
   left: 0;
   bottom: 0;
-  color: var(--scene-faint);
 }
 .scene-cat {
   bottom: 0;
-  color: var(--muted);
+  color: var(--quiet);
 }
 .scene-bird {
   position: absolute;
   left: 0;
   bottom: 0;
-  color: var(--body);
+  color: var(--accent);
   pointer-events: auto;
   transition: transform 125ms linear;
 }
 
-.list {
-  list-style: none;
-  padding: 0;
-}
-.list > li + li {
-  margin-top: 28px;
-  padding-top: 28px;
-  border-top: 1px solid var(--hairline);
-}
-.line {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-}
-.name {
-  color: var(--text);
-  font-size: var(--size-name);
-  font-weight: 600;
-  line-height: 1.35;
-  text-wrap: balance;
-}
-.name a {
-  text-decoration-color: transparent;
-}
-.name a:hover {
-  text-decoration-color: var(--accent);
-}
-.when {
-  color: var(--muted);
-  font-size: var(--size-small);
-  white-space: nowrap;
-  text-align: right;
-  flex: none;
-}
-.sub {
-  color: var(--muted);
-  font-size: var(--size-small);
-  margin-top: 2px;
-}
-.summary {
-  margin-top: 6px;
-}
-.meta {
-  color: var(--muted);
-  font-size: var(--size-small);
-  margin-top: 6px;
-}
-.meta a {
-  color: var(--accent);
-}
-.award {
-  color: var(--text);
-  font-size: var(--size-small);
-  font-weight: 500;
-  margin-top: 2px;
-}
-.project-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 14px;
-}
-
-.footer {
-  margin-top: 88px;
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  color: var(--muted);
-  font-size: var(--size-small);
-}
-.theme {
-  background: none;
-  border: 0;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-}
-
-@media (max-height: 479px) {
-  :root {
-    --space-top: 40px;
+@media (prefers-reduced-motion: reduce) {
+  .scene-cloud,
+  .scene-far,
+  .scene-bird {
+    transition: none;
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 639px) {
   :root {
-    --space-top: 40px;
-    --space-section: 48px;
-    --space-bottom: 40px;
-    --gutter: 20px;
+    --gap: 64px;
+  }
+  body {
+    padding: 0 16px;
   }
   .page {
-    display: block;
+    padding-top: 16px;
   }
-  .sidebar {
-    display: block;
-    padding: var(--space-top) var(--gutter) 28px;
-    border-right: 0;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .sidebar-inner {
-    position: static;
-    min-height: 0;
-    grid-template-rows: none;
-    width: auto;
-    gap: 16px;
-  }
-  .section-nav,
   .scene {
     display: none;
   }
-  .content {
-    max-width: none;
-    padding-inline: var(--gutter);
-  }
-  .footer {
-    margin-top: 64px;
+  .card-body {
+    padding: 20px;
   }
 }
 
-@media (max-width: 560px) {
-  .line {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-  }
-  .when {
-    text-align: left;
-    white-space: normal;
+/* A landscape phone has width to spare but not height; the square would push the projects a screen down. */
+@media (max-height: 559px) {
+  .scene {
+    display: none;
   }
 }
 
 @media print {
-  .theme {
+  .theme,
+  .actions {
     display: none;
   }
 }

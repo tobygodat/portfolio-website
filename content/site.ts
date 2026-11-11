@@ -5,13 +5,13 @@
 
 export const site = {
   name: "Toby Godat",
-  /** One line under the name. */
-  tagline: "cs + math @ georgia tech · part-time swe @ wwt",
+  /** The LinkedIn headline, shown large under the name. */
+  headline: "CS + Math @ Georgia Tech | Part-Time SWE @ WWT",
+  /** Shown quietly under the headline. */
+  place: "Atlanta and St. Louis",
   /** Browser tab and link previews. */
   description:
     "Toby Godat is a software engineer and math & computing student at Georgia Tech, building developer tools and full-stack products.",
-  /** Set to a path in /public (e.g. "/me.jpg") once you add a photo. */
-  photo: null as string | null,
   /** Shown in the page footer. */
   updated: "November 2026",
 };
@@ -23,25 +23,6 @@ export const links: { kind: LinkKind; label: string; href: string }[] = [
   { kind: "linkedin", label: "linkedin", href: "https://www.linkedin.com/in/tobygodat/" },
   { kind: "x", label: "x.com", href: "https://x.com/tobygodat" },
   { kind: "mail", label: "email", href: "mailto:tobygodat@gmail.com" },
-];
-
-/** Paragraphs of the bio (from the LinkedIn About section). Plain text, or a small array of text and links. */
-export const about: (string | { text: string; href: string })[][] = [
-  [
-    "Hi, I'm Toby, an undergraduate mathematics and computer science major at Georgia Tech! I'm very passionate about software development, machine learning, computer architecture, and anything else related to innovation in science and technology.",
-  ],
-  [
-    "Right now I'm a part-time software engineering intern at ",
-    { text: "World Wide Technology", href: "https://www.wwt.com/" },
-    " while studying in Atlanta, and I'm based in St. Louis when I'm home.",
-  ],
-  [
-    "I'm open to chat about any potential opportunities! Reach me on ",
-    { text: "LinkedIn", href: "https://www.linkedin.com/in/tobygodat/" },
-    " or by ",
-    { text: "email", href: "mailto:tobygodat@gmail.com" },
-    ".",
-  ],
 ];
 
 export type Position = {
@@ -74,10 +55,13 @@ export const experience: Role[] = [
 ];
 
 export type Project = {
+  id: "fiada" | "keystone" | "stilltype";
   name: string;
+  /** What it is, in a few words; leads the card's small line. */
+  kind: string;
   /** When it happened. */
   context: string;
-  /** Prize or recognition, shown on its own line under the name. */
+  /** Prize or recognition, shown between the kind and the dates. */
   award?: string;
   summary: string;
   stack: string[];
@@ -88,9 +72,11 @@ export type Project = {
 /** Only the projects with the strongest signal, matching the current resume. */
 export const projects: Project[] = [
   {
+    id: "fiada",
     name: "Fiada",
+    kind: "Zoomable codebase map",
     context: "Sep 2026 – Oct 2026",
-    award: "1st place, ML/AI + visualization track, HackGT 13",
+    award: "1st place, ML/AI + visualization, HackGT 13",
     summary:
       "A zoomable map of a codebase that lights up the files your AI coding agent touches. It matched 81 of 88 frontend HTTP calls to backend routes in Outline, a knowledge base app, with no wrong matches. Replacing SVG with Canvas cut mean zoom frame time from about 60 to 17\u00A0ms on a 13K-node Next.js map in benchmarks.",
     stack: ["TypeScript", "React", "Fastify", "tree-sitter", "MCP"],
@@ -101,7 +87,9 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "keystone",
     name: "Keystone",
+    kind: "Native desktop app for coding agents",
     context: "Oct 2026",
     summary:
       "A native desktop app that runs the Claude Code and Codex coding agents through your installed CLIs. Sessions live in an append-only SQLite event log, and crash recovery never resends an interrupted request. An MCP server lets one agent launch and steer others across providers.",
@@ -109,7 +97,9 @@ export const projects: Project[] = [
     links: [{ label: "private repo" }],
   },
   {
+    id: "stilltype",
     name: "Stilltype",
+    kind: "Typing practice for touch typists",
     context: "Sep 2026 – present",
     summary:
       "Typing practice for people who already touch type: it finds weak letter pairs, drills them, and retests on text you haven't seen. Rendering only the text near the cursor halved p95 keydown-to-paint latency from 64 to 32\u00A0ms in a Chromium benchmark.",
