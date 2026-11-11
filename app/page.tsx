@@ -1,155 +1,160 @@
-import { SectionNav } from "@/components/SectionNav";
+import type { ReactNode } from "react";
 import { SkyScene } from "@/components/SkyScene";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { education, experience, links, projects, site } from "@/content/site";
+import { thumbnails } from "@/components/thumbnails";
+import { education, experience, links, projects, site, type Project } from "@/content/site";
 
-function Name({ name, href }: { name: string; href?: string }) {
-  if (!href) return <>{name}</>;
+const sections = [
+  { id: "projects", label: "projects" },
+  { id: "work", label: "work" },
+  { id: "school", label: "school" },
+];
+
+const email = links.find((l) => l.kind === "mail")!;
+
+function External({ href, className, children }: { href: string; className?: string; children: ReactNode }) {
+  const outside = !href.startsWith("mailto:");
   return (
-    <a href={href} target="_blank" rel="noreferrer">
-      {name}
+    <a href={href} className={className} target={outside ? "_blank" : undefined} rel={outside ? "noreferrer" : undefined}>
+      {children}
     </a>
   );
 }
 
-function Joined({ items }: { items: string[] }) {
+function ProjectCard({ project }: { project: Project }) {
+  const Thumb = thumbnails[project.id];
+  const home = project.links.find((l) => l.href)?.href;
   return (
-    <>
-      {items.map((item, i) => (
-        <span key={item}>
-          {i > 0 && " · "}
-          {item}
-        </span>
+    <article className="card">
+      <div className="thumb" aria-hidden="true">
+        <Thumb />
+      </div>
+      <div className="card-body">
+        <p className="kicker">{[project.kind, project.award, project.context].filter(Boolean).join(" · ")}</p>
+        <h3 className="card-title">
+          {home ? (
+            <External href={home} className="title-link">
+              {project.name} ↗
+            </External>
+          ) : (
+            project.name
+          )}
+        </h3>
+        <p className="summary">{project.summary}</p>
+        <p className="chips">
+          {project.stack.map((s) => (
+            <span key={s} className="chip">
+              {s}
+            </span>
+          ))}
+          {project.links.map((l) =>
+            l.href ? (
+              <External key={l.label} href={l.href} className="chip-link">
+                {l.label} ↗
+              </External>
+            ) : (
+              <span key={l.label} className="chip-link">
+                {l.label}
+              </span>
+            ),
+          )}
+        </p>
+      </div>
+    </article>
+  );
+}
+
+function Entry({ title, href, rows, note }: { title: string; href?: string; rows: { what: string; when: string }[]; note?: string }) {
+  return (
+    <div className="entry">
+      <h3 className="entry-title">{href ? <External href={href}>{title}</External> : title}</h3>
+      {rows.map((r) => (
+        <p key={r.what + r.when} className="entry-row">
+          <span>{r.what}</span>
+          <span className="when">{r.when}</span>
+        </p>
       ))}
-    </>
+      {note && <p className="entry-note">{note}</p>}
+    </div>
   );
 }
 
 export default function Page() {
   return (
     <div className="page">
-      <aside className="sidebar">
-      <div className="sidebar-inner">
-      <header>
-        {site.photo && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img className="photo" src={site.photo} alt={`Photo of ${site.name}`} width={96} height={96} />
-        )}
-        <h1>{site.name}</h1>
-        <p className="tagline">{site.headline}</p>
-      </header>
-        <SectionNav />
-        <p className="contact">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} target={l.href.startsWith("mailto:") ? undefined : "_blank"} rel="noreferrer">
-              {l.label}
+      <header className="top">
+        <nav aria-label="Sections" className="top-nav">
+          {sections.map((s) => (
+            <a key={s.id} href={`#${s.id}`}>
+              {s.label}
             </a>
           ))}
-        </p>
-        <SkyScene />
-      </div>
-      </aside>
+        </nav>
+        <nav aria-label="Elsewhere" className="top-nav">
+          {links.map((l) => (
+            <External key={l.href} href={l.href}>
+              {l.label}
+            </External>
+          ))}
+        </nav>
+      </header>
 
-      <main className="content">
-
-        <section id="education" aria-labelledby="education-title">
-          <h2 id="education-title">education</h2>
-          <ul className="list">
-            <li>
-              <p className="line">
-                <span className="name">
-                  <Name name={education.school} href={education.href} />
-                </span>
-                <span className="when">{education.dates}</span>
-              </p>
-              <p className="sub">
-                <Joined items={[education.degree, education.detail, education.location]} />
-              </p>
-              <p className="meta">
-                <Joined items={education.coursework} />
-              </p>
-            </li>
-          </ul>
+      <main className="main">
+        <section className="hero" aria-labelledby="name">
+          <div className="hero-text">
+            <h1 id="name">{site.name}</h1>
+            <p className="headline">{site.headline}</p>
+            <p className="place">{site.place}</p>
+            <p className="actions">
+              <a className="button button-fill" href={email.href}>
+                Reach out
+              </a>
+              <a className="button button-line" href="#projects">
+                See projects
+              </a>
+            </p>
+          </div>
+          <SkyScene />
         </section>
 
-        <section id="experience" aria-labelledby="experience-title">
-          <h2 id="experience-title">experience</h2>
-          <ul className="list">
+        <section id="projects" className="projects" aria-labelledby="built">
+          <h2 id="built">Things I&apos;ve built</h2>
+          {projects.map((p) => (
+            <ProjectCard key={p.id} project={p} />
+          ))}
+        </section>
+
+        <section className="history" aria-label="Work and school">
+          <div id="work" className="history-col">
+            <h2>Work</h2>
             {experience.map((r) => (
-              <li key={r.org}>
-                {r.positions.length === 1 ? (
-                  <>
-                    <p className="line">
-                      <span className="name">
-                        <Name name={r.org} href={r.href} />
-                      </span>
-                      <span className="when">{r.positions[0].dates}</span>
-                    </p>
-                    <p className="sub">
-                      <Joined items={[r.positions[0].role, r.positions[0].location]} />
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <p className="name">
-                      <Name name={r.org} href={r.href} />
-                    </p>
-                    {r.positions.map((pos) => (
-                      <p key={pos.role} className="line sub">
-                        <span>
-                          <Joined items={[pos.role, pos.location]} />
-                        </span>
-                        <span className="when">{pos.dates}</span>
-                      </p>
-                    ))}
-                  </>
-                )}
-              </li>
+              <Entry
+                key={r.org}
+                title={r.org}
+                href={r.href}
+                rows={r.positions.map((pos, i) => ({
+                  what: pos.location === r.positions[i + 1]?.location ? pos.role : `${pos.role} · ${pos.location}`,
+                  when: pos.dates,
+                }))}
+              />
             ))}
-          </ul>
+          </div>
+          <div id="school" className="history-col">
+            <h2>School</h2>
+            <Entry
+              title={education.school}
+              href={education.href}
+              rows={[{ what: `${education.degree} · ${education.detail}`, when: education.dates }]}
+              note={education.coursework.join(" · ")}
+            />
+          </div>
         </section>
-
-        <section id="projects" aria-labelledby="projects-title">
-          <h2 id="projects-title">projects</h2>
-          <ul className="list">
-            {projects.map((p) => (
-              <li key={p.name}>
-                <p className="line">
-                  <span className="name">{p.name}</span>
-                  <span className="when">{p.context}</span>
-                </p>
-                {p.award && <p className="award">{p.award}</p>}
-                <p className="summary">{p.summary}</p>
-                <p className="meta project-meta">
-                  <span>
-                    <Joined items={p.stack} />
-                  </span>
-                  <span>
-                    {p.links.map((l, i) => (
-                      <span key={l.label}>
-                        {i > 0 && " · "}
-                        {l.href ? (
-                          <a href={l.href} target="_blank" rel="noreferrer">
-                            {l.label}
-                          </a>
-                        ) : (
-                          l.label
-                        )}
-                      </span>
-                    ))}
-                  </span>
-                </p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
+      </main>
 
       <footer className="footer">
         <span>last updated {site.updated.toLowerCase()}</span>
         <ThemeToggle />
       </footer>
-      </main>
     </div>
   );
 }

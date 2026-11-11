@@ -6,9 +6,9 @@ const nextConfig: NextConfig = {
   // The site is one page now; the old section routes point at their anchors.
   async redirects() {
     return [
-      { source: "/experience", destination: "/#experience", permanent: true },
+      { source: "/experience", destination: "/#work", permanent: true },
       { source: "/projects", destination: "/#projects", permanent: true },
-      { source: "/education", destination: "/#education", permanent: true },
+      { source: "/education", destination: "/#school", permanent: true },
     ];
   },
 };
