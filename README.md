@@ -4,7 +4,7 @@ A one-page personal site built with Next.js (App Router, static output, no backe
 
 ## Edit content
 
-Everything visible lives in [`content/site.ts`](content/site.ts): name, tagline, links, bio, experience, projects, education. Components never hard-code copy.
+Everything visible lives in [`content/site.ts`](content/site.ts): name, tagline, links, bio, experience, projects, education. Components hard-code only the section names and the footer's wording.
 
 - **Photo:** drop an image in `public/` and set `site.photo` to its path (e.g. `"/me.jpg"`).
 - **Project links:** add `{ label, href }` entries to a project's `links` array once the repos are public.
@@ -16,8 +16,8 @@ npm install
 npm run dev
 ```
 
-`npm run build` produces a fully static site; deploy to Vercel, Netlify, or GitHub Pages.
+`npm run build` prerenders the page as static content. The site deploys to Cloudflare Workers through OpenNext (`wrangler.jsonc`, `open-next.config.ts`).
 
 ## Design
 
-`DESIGN.md` records the visual system (tokens, type, components). `PRODUCT.md` records product facts and decisions.
+`DESIGN.md` records the current look (tokens, type, spacing, layout). `PRODUCT.md` records product facts and decisions.

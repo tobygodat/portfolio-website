@@ -1,14 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Literata } from "next/font/google";
+import { Schibsted_Grotesk } from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
 
-// A book serif for reading on screens; self-hosted at build time so every OS sees the same lettering.
-const serif = Literata({
+// Self-hosted at build time so every OS sees the same lettering.
+const sans = Schibsted_Grotesk({
   subsets: ["latin"],
-  axes: ["opsz"],
   display: "swap",
-  variable: "--font-serif",
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -24,8 +23,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: "dark light",
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#1b1a19" },
-    { media: "(prefers-color-scheme: light)", color: "#f4f1eb" },
+    { media: "(prefers-color-scheme: dark)", color: "#1f1f1f" },
+    { media: "(prefers-color-scheme: light)", color: "#f4f4f5" },
   ],
 };
 
@@ -34,7 +33,7 @@ const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t!==
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={serif.variable} suppressHydrationWarning>
+    <html lang="en" className={sans.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
